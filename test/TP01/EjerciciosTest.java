@@ -2,10 +2,10 @@ package TP01;
 
 import java.util.Arrays;
 
-import static TP01.Ej1.*;
+import static TP01.Ejercicios.*;
 import static org.junit.Assert.*;
 
-public class Ej1Test {
+public class EjerciciosTest {
 
 
     @org.junit.Test
