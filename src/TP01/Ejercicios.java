@@ -3,7 +3,7 @@ package TP01;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Ej1 {
+public class Ejercicios {
     /*Ejercicio 1
     Modificar los algoritmos de búsqueda secuencial y búsqueda binaria de manera que devuelva
     la posición en donde se encuentra el valor a buscar. Tener en cuenta que el elemento a buscar
