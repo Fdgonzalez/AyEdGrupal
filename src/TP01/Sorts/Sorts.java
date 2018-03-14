@@ -4,15 +4,15 @@ import java.util.Random;
 
 public class Sorts {
 
-    public static int[] generateRandom(int n){
-        int[] result = new int[n];
+    public static Integer[] generateRandom(int n){
+        Integer[] result = new Integer[n];
         Random random = new Random();
         for(int i=0;i<n;i++){
             result[i] = random.nextInt() % 100;
         }
         return result;
     }
-    public static long benchmarkSort(Sort s, int[] a){
+    public static long benchmarkSort(Sort s, Integer[] a){
         long start = System.nanoTime();
         s.sort(a);
         long end = System.nanoTime();

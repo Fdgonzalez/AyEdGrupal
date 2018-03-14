@@ -14,21 +14,28 @@ public class SortsTest {
 
     @org.junit.Test
     public void selectionSortTest() {
-        int[] array = {6,8,1,4,12,10,14};
+        Integer[] array = {6,8,1,4,12,10,14};
         Sort s = new SelectionSort();
         s.sort(array);
         assertEquals("[1, 4, 6, 8, 10, 12, 14]",Arrays.toString(array));
     }
     @org.junit.Test
+    public void recursiveSelectionSortTest() {
+        Integer[] array = {6,8,1,4,12,10,14};
+        SelectionSort s = new SelectionSort();
+        s.sortRecursive(array);
+        assertEquals("[1, 4, 6, 8, 10, 12, 14]",Arrays.toString(array));
+    }
+    @org.junit.Test
     public void insertionSortTest(){
-        int[] array = {6,8,1,4,12,10,14};
+        Integer[] array = {6,8,1,4,12,10,14};
         Sort s = new InsertionSort();
         s.sort(array);
         assertEquals("[1, 4, 6, 8, 10, 12, 14]",Arrays.toString(array));
     }
     @org.junit.Test
     public void bubbleSortTest(){
-        int[] array = {6,8,1,4,12,10,14};
+        Integer[] array = {6,8,1,4,12,10,14};
         Sort s = new BubbleSort();
         s.sort(array);
         assertEquals("[1, 4, 6, 8, 10, 12, 14]", Arrays.toString(array));
