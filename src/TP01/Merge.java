@@ -9,32 +9,27 @@ import java.util.Arrays;
  * Todo: falta comprobar que lista a o b ya dio todos los elementos y tirar todos los del otro a c
  */
 public class Merge {
-    public static Comparable[] mergeSort(Comparable[] arrayA, Comparable[] arrayB) {
+    public static Comparable[] merge(Comparable[] arrayA, Comparable[] arrayB) {
         boolean flag = true;
         int i = 0; //arrayA iteration index
         int j = 0; //arrayB iteration index
         Comparable[] arrayC = new Comparable[arrayA.length + arrayB.length];
         int k = 0; //arrayC iteration index
-        while(flag) {
-            System.out.println("arrayA: " + Arrays.toString(arrayA) + "\n" +
-                    "arrayB: " + Arrays.toString(arrayB) + "\narrayC: " + Arrays.toString(arrayC));
-            int comparation = arrayA[i].compareTo(arrayB[j]);
-            if(comparation <= 0) {
-                arrayC[k] = arrayA[i];
-                if(i < arrayA.length - 1){
-                    i++;
-                    k++;
-                } else k++;
-            } else {
-                arrayC[k] = arrayB[j];
-                if(j < arrayB.length - 1) {
-                    j++;
-                    k++;
-                } else {
-                    k++;
-                }
+        while(k <= arrayC.length - 1) {
+            if(i >= arrayA.length){
+                while(j < arrayB.length)
+                    arrayC[k++] = arrayB[j++];
+
+                return arrayC;
             }
-            if(k+1 == arrayC.length) flag = false;
+            if(j >= arrayB.length)
+                while(i < arrayA.length)
+                    arrayC[k++] = arrayA[i++];
+            if(arrayA[i].compareTo(arrayB[j]) <= 0)
+                arrayC[k++] = arrayA[i++];
+             else
+                arrayC[k++] = arrayB[j++];
+
         }
         return arrayC;
     }
@@ -44,6 +39,6 @@ public class Merge {
         Integer[] arrayA = {1, 2, 3};
         Integer[] arrayB = {2, 4};
         Integer[] resultArray = {1, 2, 2, 3, 4};
-        mergeSort(arrayA, arrayB);
+        System.out.println(Arrays.toString(merge(arrayA, arrayB)));
     }
 }
