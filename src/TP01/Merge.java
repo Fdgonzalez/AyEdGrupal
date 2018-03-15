@@ -19,7 +19,6 @@ public class Merge {
             if(i >= arrayA.length){
                 while(j < arrayB.length)
                     arrayC[k++] = arrayB[j++];
-
                 return arrayC;
             }
             if(j >= arrayB.length)
@@ -29,7 +28,6 @@ public class Merge {
                 arrayC[k++] = arrayA[i++];
              else
                 arrayC[k++] = arrayB[j++];
-
         }
         return arrayC;
     }
