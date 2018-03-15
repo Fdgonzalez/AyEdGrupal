@@ -1,5 +1,9 @@
 package TP01.Sorts;
 
+
+/**
+ * Dado una coleccion de informacion comparable desordenada, el metodo insertion sort
+ */
 public class InsertionSort extends Sort{
     public void sort(Comparable[] a){
         int count = 1;

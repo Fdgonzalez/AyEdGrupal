@@ -1,6 +1,9 @@
 package TP01.Sorts;
 
 
+/**
+ * Dado una coleccion de informacion comparable desordenada, el metodo bubble sort
+ */
 public class BubbleSort extends Sort{
     public void sort(Comparable[] a){
         boolean flag = true;

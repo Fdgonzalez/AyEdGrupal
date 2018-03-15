@@ -1,6 +1,9 @@
 package TP01.Sorts;
 
 
+/**
+ * Dado una coleccion de informacion comparable desordenada, el metodo selection sort
+ */
 public class SelectionSort extends Sort {
     public void sort(Comparable[] a) {
         int count = 0;
