@@ -16,7 +16,7 @@ public class Sorts {
         long start = System.nanoTime();
         s.sort(a);
         long end = System.nanoTime();
-        return (end - start ); //return value in nanoseconds
+        return (end - start); //return value in nanoseconds
     }
     public static long sortAverageHundredRuns(Sort s, int size){
         long sum = 0;
@@ -26,7 +26,7 @@ public class Sorts {
         return sum;
     }
     public static void main(String[] args) {
-        System.out.println("Average run time for ten arrays");
+        System.out.println("Average run time for one hundred arrays of lengths 10, 100 and 1000");
         System.out.println("Selection Sort");
         System.out.println("Length 10: " + sortAverageHundredRuns(new SelectionSort(),10));
         System.out.println("Length 100: " + sortAverageHundredRuns(new SelectionSort(),100));
