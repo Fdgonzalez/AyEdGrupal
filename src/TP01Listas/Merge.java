@@ -6,11 +6,9 @@ import java.util.Arrays;
  * Given 2 sorted collections, merge them and return a new sorted collection.
  * The collections must be comparable.
  *
- * Todo: falta comprobar que lista a o b ya dio todos los elementos y tirar todos los del otro a c
  */
 public class Merge {
     public static Comparable[] merge(Comparable[] arrayA, Comparable[] arrayB) {
-        boolean flag = true;
         int i = 0; //arrayA iteration index
         int j = 0; //arrayB iteration index
         Comparable[] arrayC = new Comparable[arrayA.length + arrayB.length];
@@ -30,13 +28,5 @@ public class Merge {
                 arrayC[k++] = arrayB[j++];
         }
         return arrayC;
-    }
-
-
-    public static void main(String[] args) {
-        Integer[] arrayA = {1, 2, 3};
-        Integer[] arrayB = {2, 4};
-        Integer[] resultArray = {1, 2, 2, 3, 4};
-        System.out.println(Arrays.toString(merge(arrayA, arrayB)));
     }
 }
