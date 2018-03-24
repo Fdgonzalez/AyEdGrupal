@@ -1,6 +1,4 @@
-package TP01;
-
-import java.util.Random;
+package TP01Listas;
 
 public class Searchs {
     /*Ejercicio 1

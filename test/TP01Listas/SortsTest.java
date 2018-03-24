@@ -1,13 +1,13 @@
-package TP01;
+package TP01Listas;
 
-import TP01.Sorts.BubbleSort;
-import TP01.Sorts.InsertionSort;
-import TP01.Sorts.SelectionSort;
-import TP01.Sorts.Sort;
+import TP01Listas.Sorts.BubbleSort;
+import TP01Listas.Sorts.InsertionSort;
+import TP01Listas.Sorts.SelectionSort;
+import TP01Listas.Sorts.Sort;
 
 import java.util.Arrays;
 
-import static TP01.Sorts.Sorts.*;
+import static TP01Listas.Sorts.Sorts.*;
 import static org.junit.Assert.*;
 
 public class SortsTest {

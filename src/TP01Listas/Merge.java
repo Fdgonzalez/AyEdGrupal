@@ -1,4 +1,4 @@
-package TP01;
+package TP01Listas;
 
 import java.util.Arrays;
 

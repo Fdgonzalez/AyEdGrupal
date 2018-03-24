@@ -1,6 +1,6 @@
-package TP01;
+package TP01Listas;
 
-import static TP01.Searchs.binSearch;
+import static TP01Listas.Searchs.binSearch;
 import static org.junit.Assert.*;
 
 public class SearchsTest {
