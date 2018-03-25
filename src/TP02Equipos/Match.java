@@ -1,7 +1,12 @@
 package TP02Equipos;
 
 public class Match {
-    String teamA;
-    String teamB;
+    public String teamA;
+    public String teamB;
+    public int result;
 
+    public Match(String teamA, String teamB) {
+        this.teamA = teamA;
+        this.teamB = teamB;
+    }
 }
