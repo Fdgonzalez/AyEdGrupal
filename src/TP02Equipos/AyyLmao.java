@@ -35,7 +35,7 @@ public class AyyLmao {
     public static String matchesOutcome(Match[] matches, int teams) {
         // boolean hasSolution = matchesOutcome();
         Team[] teamsx = new Team[teams];
-        boolean ok = matchesOutcome(1, 0, matches, teamsx);
+        boolean ok = matchesOutcome();
         return "";
     }
 
