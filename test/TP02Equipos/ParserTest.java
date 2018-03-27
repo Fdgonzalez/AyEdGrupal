@@ -108,27 +108,4 @@ public class ParserTest {
         v.solve();
         assertEquals(v.toString(),"1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X");
     }
-    @Test
-    public void test3() throws InvalidResultException, NoMatchesException {
-        String input = "6 9\n" +
-                "Barcelona 6\n" +
-                "Valencia 4\n" +
-                "Madrid 4\n" +
-                "Deportivo 4\n" +
-                "Sevilla 3\n" +
-                "Betis 3\n" +
-                "Barcelona Deportivo\n" +
-                "Valencia Deportivo\n" +
-                "Valencia Barcelona\n" +
-                "Betis Sevilla\n" +
-                "Madrid Deportivo\n" +
-                "Sevilla Madrid\n" +
-                "Betis Deportivo\n" +
-                "Madrid Betis\n" +
-                "Betis Valencia";
-        Parser p = new Parser(input);
-        Validator v = p.parseNext();
-        v.solve();
-        v.print();
-    }
 }
