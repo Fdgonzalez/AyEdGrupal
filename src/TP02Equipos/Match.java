@@ -10,9 +10,4 @@ public class Match {
         this.teamB = teamB;
     }
 
-    public boolean isResultValid(int a) {
-switch (result) {
-            case (0): if (teamA.points
-        }
-    }
 }
