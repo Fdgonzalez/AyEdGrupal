@@ -1,4 +1,4 @@
-package TP01Listas;
+package TP01SearchSortMerge;
 
 public class Searchs {
     /*Ejercicio 1

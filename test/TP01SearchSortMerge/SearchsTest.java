@@ -1,6 +1,6 @@
-package TP01Listas;
+package TP01SearchSortMerge;
 
-import static TP01Listas.Searchs.binSearch;
+import static TP01SearchSortMerge.Searchs.binSearch;
 import static org.junit.Assert.*;
 
 public class SearchsTest {
