@@ -19,6 +19,7 @@ public class Validator{
         solve(root);
     }
     public void solve(Node current) throws InvalidResultException {
+        current.match.undoResult(); // resets the result previously set (that turned out to be wrong)
         List<Character> possibles = new LinkedList<>();
         if(current.match.isPossible('X'))
             possibles.add('X');
@@ -52,7 +53,7 @@ public class Validator{
                 if(isCorrect)
                     return;
             }
-            current.match.undoResult();//Bug: can't undo last match
+            current.match.undoResult();
             currentMatch--;
         }
     }
