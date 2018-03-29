@@ -1,4 +1,4 @@
-package TP01Listas.Sorts;
+package TP01SearchSortMerge.Sorts;
 
 import java.util.Random;
 
