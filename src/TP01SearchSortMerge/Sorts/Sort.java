@@ -1,4 +1,4 @@
-package TP01Listas.Sorts;
+package TP01SearchSortMerge.Sorts;
 
 public abstract class Sort {
     public abstract void sort(Comparable[] a);

@@ -1,8 +1,8 @@
-package TP01Listas;
+package TP01SearchSortMerge;
 
 
 import java.util.Arrays;
-import static TP01Listas.Merge.merge;
+import static TP01SearchSortMerge.Merge.merge;
 import static org.junit.Assert.*;
 
 

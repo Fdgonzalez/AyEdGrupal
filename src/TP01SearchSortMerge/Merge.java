@@ -1,6 +1,4 @@
-package TP01Listas;
-
-import java.util.Arrays;
+package TP01SearchSortMerge;
 
 /**
  * Given 2 sorted collections, merge them and return a new sorted collection.
