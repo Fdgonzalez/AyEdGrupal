@@ -1,11 +1,8 @@
-/*
-  TP 03: Integracion de Arboles, Pilas y Colas.
-  Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- */
+
 package TP03ArbolesColasYPilas;
-
-
 /**
+ * TP 03: Integracion de Arboles, Pilas y Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
  * Clase Arbol Binario con Nodos Dobles.
  * @param <T> generic
  */
@@ -63,7 +60,30 @@ public class BinaryTree<T> {
         temp.root = this.root.right;
         return temp;
     }
+    public void printLevel(int level){
+        if(isEmpty())
+            return;
+        if(level == 1)
+            System.out.print(root.value.toString());
+        else{
+            leftChild().printLevel(level - 1);
+            rightChild().printLevel(level - 1);
+        }
+    }
+    public int height(){
+        if(isEmpty())
+            return 0;
+        int left = leftChild().height();
+        int right = rightChild().height();
 
+        return 1 + Math.max(left,right);
+    }
+    public void printByLevel(){
+        for(int i = 1; i <= height();i++){
+            printLevel(i);
+        }
+        System.out.println();
+    }
     /**
      * Double Node nested class
      * @param <T> generic
