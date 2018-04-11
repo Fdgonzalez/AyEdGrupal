@@ -97,6 +97,7 @@ public class BinaryTree<T> {
     }
 
     /**
+     * 
      * @return
      */
     public int height(){
