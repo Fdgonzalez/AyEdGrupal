@@ -1,21 +1,30 @@
-
 package TP03ArbolesColasYPilas;
 
+
 import java.util.Iterator;
+
+
 /**
  * TP 03: Integracion de Arboles, Pilas y Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
  * Clase Arbol Binario con Nodos Dobles.
+ * TODO: queue.
+ * TODO: binary tree test!!
+ * TODO: separate ex1 and ex2 ?
+ *
  * @param <T> generic
  */
-
 public class BinaryTree<T> {
-    private DoubleNode<T> root;
+    private DoubleNode root;
+    private int size;
+
     /**
      * Constructor vacio
      */
     public BinaryTree() {
         this.root = null;
+        this.size = 0;
     }
 
     /**
@@ -23,22 +32,31 @@ public class BinaryTree<T> {
      * @param value of root
      */
     public BinaryTree(T value) {
-        root = new DoubleNode<>();
+        root = new DoubleNode();
         this.root.value = value;
+        this.size = 1;
     }
-    private BinaryTree(DoubleNode<T> root){
-        this.root = root;
-    }
+
     /**
-     * Creates a complete tree
+     * constructor with root
+     * @param root double node
+     */
+    private BinaryTree(DoubleNode root, int size){
+        this.root = root;
+        this.size = size;
+    }
+
+    /**
+     * Creates a complete tree specified
      * @param value of root
      * @param left child
      * @param right child
      */
-    public BinaryTree(T value, DoubleNode<T> left, DoubleNode<T> right) {
+    public BinaryTree(T value, DoubleNode left, DoubleNode right, int size) {
         this.root.value = value;
         this.root.left = left;
         this.root.right = right;
+        this.size = size;
     }
 
     /**
@@ -47,20 +65,28 @@ public class BinaryTree<T> {
     public boolean isEmpty() {
         return this.root == null;
     }
-    public void insertRight(T elem){
-        root.right = new DoubleNode<T>();
-        root.right.value = elem;
 
+    /**
+     * @param elem generic
+     */
+    public void insertRight(T elem){
+        root.right = new DoubleNode();
+        root.right.value = elem;
     }
+
+    /**
+     * @param elem generic
+     */
     public void insertLeft(T elem){
-        root.left = new DoubleNode<T>();
+        root.left = new DoubleNode();
         root.left.value = elem;
     }
+
     /**
      * @return gives the left child of this tree
      */
     public BinaryTree<T> leftChild() {
-        BinaryTree<T> temp = new BinaryTree<T>();
+        BinaryTree<T> temp = new BinaryTree<>();
         temp.root = this.root.left;
         return temp;
     }
@@ -69,40 +95,35 @@ public class BinaryTree<T> {
      * @return gives the right child of this tree
      */
     public BinaryTree<T> rightChild() {
-        BinaryTree<T> temp = new BinaryTree<T>();
+        BinaryTree<T> temp = new BinaryTree<>();
         temp.root = this.root.right;
         return temp;
     }
 
     /**
-     * @param level
+     * @param level int
      */
     public void printLevel(int level){
-        if(isEmpty())
-            return;
-        if(level == 1)
-            System.out.print(root.value.toString());
-        else{
+        if(isEmpty()) return;
+        if(level == 1) System.out.print(root.value.toString());
+        else {
             leftChild().printLevel(level - 1);
             rightChild().printLevel(level - 1);
         }
     }
 
     /**
-     * 
-     * @return
+     * @return int
      */
     public int height(){
-        if(isEmpty())
-            return 0;
+        if(isEmpty()) return 0;
         int left = leftChild().height();
         int right = rightChild().height();
-
         return 1 + Math.max(left,right);
     }
 
     /**
-     *
+     * prints
      */
     public void printByLevel(){
         for(int i = 1; i <= height();i++){
@@ -110,18 +131,20 @@ public class BinaryTree<T> {
         }
         System.out.println();
     }
+
+    /**
+     * @return
+     */
     public Iterator<T> inOrder(){
         return new Iterator<T>() {
             private Queue<T> queue = null;
             private BinaryTree<T> tree = new BinaryTree<>(root);
 
             private void generateQueue(BinaryTree<T> tree){
-                if(tree.isEmpty())
-                    return;
+                if(tree.isEmpty()) return;
                 generateQueue(tree.leftChild());
-                if(queue == null)
-   //                 queue = new queue<T>();
- //               queue.enqueue(tree.root.value);
+                if(queue == null) queue = new Queue<T>();
+                queue.enqueue(tree.root.value);
                 generateQueue(tree.rightChild());
             }
 
@@ -155,8 +178,8 @@ public class BinaryTree<T> {
             void generateQueue(BinaryTree<T> current){
                 if (tree.isEmpty()) return;
                 if(queue == null)
-           //         queue = new queue<T>(11);
-         //       queue.enqueue(current.root.value);
+                    queue = new Queue<T>();
+                queue.enqueue(current.root.value);
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
             }
@@ -217,10 +240,9 @@ public class BinaryTree<T> {
 
     /**
      * Double Node nested class
-     * @param <T> generic
      */
-    private class DoubleNode<T> {
+    private class DoubleNode {
         T value;
-        DoubleNode<T> left, right;
+        DoubleNode left, right;
     }
 }
