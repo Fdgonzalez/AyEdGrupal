@@ -8,6 +8,7 @@ import java.util.Iterator;
  * Clase Arbol Binario con Nodos Dobles.
  * @param <T> generic
  */
+
 public class BinaryTree<T> {
     private DoubleNode<T> root;
     /**
@@ -119,8 +120,8 @@ public class BinaryTree<T> {
                     return;
                 generateQueue(tree.leftChild());
                 if(queue == null)
-                    queue = new queue<T>();
-                queue.enqueue(tree.root.value);
+   //                 queue = new queue<T>();
+ //               queue.enqueue(tree.root.value);
                 generateQueue(tree.rightChild());
             }
 
@@ -135,11 +136,7 @@ public class BinaryTree<T> {
             @Override
             public T next() {
                 if(queue == null) {
-                    try {
-                        generateQueue(tree);
-                    } catch (QueueFullException e) {
-                        System.out.println("Mas elementos en el arbol que en el momento de crecion del iterator");
-                    }
+                    generateQueue(tree);
                 }
                 return queue.dequeue();
             }
@@ -158,8 +155,8 @@ public class BinaryTree<T> {
             void generateQueue(BinaryTree<T> current){
                 if (tree.isEmpty()) return;
                 if(queue == null)
-                    queue = new queue<T>(11);
-                queue.enqueue(current.root.value);
+           //         queue = new queue<T>(11);
+         //       queue.enqueue(current.root.value);
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
             }
@@ -195,9 +192,9 @@ public class BinaryTree<T> {
                 if (tree.isEmpty()) return;
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
-                if(queue == null)
-                    queue = new Queue();
-                queue.enqueue(current.root.value);
+                //if(queue == null)
+               //     queue = new Queue();
+             //   queue.enqueue(current.root.value);
             }
 
             @Override

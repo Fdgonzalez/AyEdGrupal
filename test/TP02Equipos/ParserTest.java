@@ -106,6 +106,7 @@ public class ParserTest {
         Parser p = new Parser(input);
         Validator v = p.parseNext();
         v.solve();
-        assertEquals(v.toString(),"1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X");
+        v.print();
+        assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
     }
 }
