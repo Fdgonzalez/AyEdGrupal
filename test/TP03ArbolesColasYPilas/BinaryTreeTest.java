@@ -2,6 +2,7 @@ package TP03ArbolesColasYPilas;
 
 import org.junit.Test;
 
+import javax.print.CancelablePrintJob;
 import java.util.Iterator;
 
 import static org.junit.Assert.*;
@@ -21,9 +22,20 @@ public class BinaryTreeTest {
         left1.insertRight('D');
         left1.rightChild().insertRight('E');
         left1.rightChild().insertLeft('C');
-        Iterator<Character> it = tree.inOrder();
-        while(it.hasNext()){
-            System.out.println(it.next());
+        Iterator<Character> postIt = tree.postOrder();
+        Iterator<Character> preIt = tree.preOrder();
+        Iterator<Character> inOrderIt = tree.inOrder();
+        while(inOrderIt.hasNext()){
+            System.out.print(inOrderIt.next());//ABCDEFGHI
+        }
+        System.out.println();
+
+        while(preIt.hasNext()){//FBADCEGIH
+            System.out.print(preIt.next());
+        }
+        System.out.println();
+        while(postIt.hasNext()){//ACEDBHIGF
+            System.out.print(postIt.next());
         }
     }
 }
