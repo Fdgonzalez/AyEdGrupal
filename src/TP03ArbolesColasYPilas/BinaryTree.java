@@ -9,8 +9,8 @@ import java.util.Iterator;
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
  *
  * Clase Arbol Binario con Nodos Dobles.
- * TODO: queue.
- * TODO: binary tree test!!
+ *
+ *
  * TODO: separate ex1 and ex2 ?
  *
  * @param <T> generic
@@ -171,7 +171,7 @@ public class BinaryTree<T> {
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
-                if (tree.isEmpty()) return;
+                if (current.isEmpty()) return;
                 if(queue == null)
                     queue = new Queue<T>();
                 queue.enqueue(current.root.value);
@@ -181,7 +181,7 @@ public class BinaryTree<T> {
 
             @Override
             public boolean hasNext() {
-                if (queue.isEmpty()) {
+                if (queue == null) {
                  generateQueue(tree);
                 }
                 return !queue.isEmpty();
@@ -189,7 +189,7 @@ public class BinaryTree<T> {
 
             @Override
             public T next() {
-                if (queue.isEmpty()) {
+                if (queue == null) {
                     generateQueue(tree);
                 }
                 return queue.dequeue();
@@ -207,7 +207,7 @@ public class BinaryTree<T> {
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
-                if (tree.isEmpty()) return;
+                if (current.isEmpty()) return;
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
                 if(queue == null)
@@ -217,7 +217,7 @@ public class BinaryTree<T> {
 
             @Override
             public boolean hasNext() {
-                if (queue.isEmpty()) {
+                if (queue == null) {
                  generateQueue(tree);
                 }
                 return !queue.isEmpty();
@@ -225,7 +225,7 @@ public class BinaryTree<T> {
 
             @Override
             public T next() {
-                if (queue.isEmpty()) {
+                if (queue == null) {
                     generateQueue(tree);
                 }
                 return queue.dequeue();
