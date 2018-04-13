@@ -1,9 +1,16 @@
 package TP03ArbolesColasYPilas;
 
-import org.junit.Test;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * TP 03: Integracion de Arboles, Pilas y Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
+ * Ejercicio 3.
+ * Clase tester auxiliar del Queue generico.
+ */
 public class QueueTest {
     @Test
     public void queue(){
@@ -19,5 +26,4 @@ public class QueueTest {
 
         assertTrue(a.isEmpty());
     }
-
 }

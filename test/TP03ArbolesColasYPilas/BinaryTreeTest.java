@@ -1,18 +1,28 @@
 package TP03ArbolesColasYPilas;
 
-import org.junit.Test;
 
-import javax.print.CancelablePrintJob;
+import org.junit.Test;
 import java.util.Iterator;
 
-import static org.junit.Assert.*;
-
+/**
+ * TP 03: Integracion de Arboles, Pilas y Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
+ * Ejercicio 2.
+ * Clase tester del Binary Tree generico construyendo un arbol manualmente.
+ */
 public class BinaryTreeTest {
-
+    /* Example given:
+             F
+            / \--¬
+           B      G
+          / \      \
+         A   D      I
+            / \    /
+           C   E  H       */
     @Test
     public void inOrder() {
-        BinaryTree<Character> tree = new BinaryTree<Character>('F');
-
+        BinaryTree<Character> tree = new BinaryTree<Character>('D');
         tree.insertRight('G');
         BinaryTree<Character> right1 = tree.rightChild();
         right1.insertRight('I');
@@ -37,6 +47,5 @@ public class BinaryTreeTest {
         System.out.println();
 
         while(postIt.hasNext()) System.out.print(postIt.next());  // ACEDBHIGF
-
     }
 }

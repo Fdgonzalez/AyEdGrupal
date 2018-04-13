@@ -8,14 +8,14 @@ import java.lang.reflect.Array;
  * TP 03: Integracion de Arboles, Pilas y Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
  *
+ * Ejercicio 3.
  * Clase Heap Tree generico.
  *
  * @param <T> generic
  */
 public class HeapPriorityQueue<T> {
     private Element[] heap;
-    private int current;
-    private int max;
+    private int current, max;
 
     /**
      * constructor

@@ -8,10 +8,8 @@ import java.util.Iterator;
  * TP 03: Integracion de Arboles, Pilas y Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
  *
+ * Ejercicio 2.
  * Clase Arbol Binario con Nodos Dobles.
- *
- *
- * TODO: separate ex1 and ex2 ?
  *
  * @param <T> generic
  */
