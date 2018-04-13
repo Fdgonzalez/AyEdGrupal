@@ -1,47 +1,42 @@
 package TP03ArbolesColasYPilas;
 
+import java.util.NoSuchElementException;
+
 public class Queue<T> {
-    private Node root;
-    private final int maxSize;
-
-    @SuppressWarnings("unchecked")
-    public Queue() {
-        this.maxSize = maxSize;
+    private Node tail;
+    public Queue(){
+        tail = null;
     }
-
-    @SuppressWarnings("unchecked")
-    public Queue(int maxSize) {
-        this.maxSize = maxSize;
+    public void enqueue(T elem){
+        Node temp = new Node(elem);
+        if(tail == null) {
+            tail = temp;
+            return;
+        }
+        temp.prev = tail;
+        tail.next = temp;
+        tail = temp;
     }
-
-    public boolean isEmpty() {
-        return root == null;
+    public T dequeue(){
+        if(isEmpty())
+            throw new NoSuchElementException();
+       T temp = tail.elem;
+       tail = tail.prev;//hace null a tail cuando es el ultimo elemento
+       if(tail != null)
+        tail.next = null;
+       return temp;
     }
-
-    public void enqueue(T t) {
-
+    public boolean isEmpty(){
+        return tail == null;
     }
-
-    public T dequeue() {
-        return null;
-    }
-
     private class Node {
-        T value;
-        Node next;
-
-        Node() {
-            this.value = null;
-            this.next = null;
-        }
-
-        Node(T value) {
-            this.value = value;
-        }
-
-        Node(T value, Node next) {
-            this.value = value;
-            this.next = next;
+        private T elem;
+        private Node next;
+        private Node prev;
+        public Node(T elem){
+            this.elem = elem;
+            prev = null;
+            next = null;
         }
     }
 }

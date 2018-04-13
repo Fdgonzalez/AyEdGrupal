@@ -17,14 +17,12 @@ import java.util.Iterator;
  */
 public class BinaryTree<T> {
     private DoubleNode root;
-    private int size;
 
     /**
      * Constructor vacio
      */
     public BinaryTree() {
         this.root = null;
-        this.size = 0;
     }
 
     /**
@@ -34,16 +32,14 @@ public class BinaryTree<T> {
     public BinaryTree(T value) {
         root = new DoubleNode();
         this.root.value = value;
-        this.size = 1;
     }
 
     /**
      * constructor with root
      * @param root double node
      */
-    private BinaryTree(DoubleNode root, int size){
+    private BinaryTree(DoubleNode root){
         this.root = root;
-        this.size = size;
     }
 
     /**
@@ -56,7 +52,6 @@ public class BinaryTree<T> {
         this.root.value = value;
         this.root.left = left;
         this.root.right = right;
-        this.size = size;
     }
 
     /**
@@ -138,7 +133,7 @@ public class BinaryTree<T> {
     public Iterator<T> inOrder(){
         return new Iterator<T>() {
             private Queue<T> queue = null;
-            private BinaryTree<T> tree = new BinaryTree<>(root);
+            private BinaryTree<T> tree = new BinaryTree<T>(root);
 
             private void generateQueue(BinaryTree<T> tree){
                 if(tree.isEmpty()) return;
@@ -172,7 +167,7 @@ public class BinaryTree<T> {
      */
     public Iterator<T> preOrder() {
         return new Iterator<T>() {
-            private BinaryTree<T> tree= new BinaryTree<T>(root.value, root.left, root.right);
+            private BinaryTree<T> tree= new BinaryTree<T>(root);
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
@@ -208,16 +203,16 @@ public class BinaryTree<T> {
      */
     public Iterator<T> postOrder() {
         return new Iterator<T>() {
-            private BinaryTree<T> tree= new BinaryTree<T>(root.value, root.left, root.right);
+            private BinaryTree<T> tree= new BinaryTree<T>(root);
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
                 if (tree.isEmpty()) return;
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
-                //if(queue == null)
-               //     queue = new Queue();
-             //   queue.enqueue(current.root.value);
+                if(queue == null)
+                    queue = new Queue<>();
+                queue.enqueue(current.root.value);
             }
 
             @Override

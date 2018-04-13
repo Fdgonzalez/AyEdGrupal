@@ -86,7 +86,7 @@ public class MinHeap<T> {
 
     /**
      * @param pos int
-     * @return is this a leaf? does this has no child?
+     * @return is this a leaf?
      */
     private boolean isLeaf(int pos) {
         return left(pos) >= current;
