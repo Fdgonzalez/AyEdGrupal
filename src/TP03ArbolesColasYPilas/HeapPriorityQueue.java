@@ -58,11 +58,11 @@ public class HeapPriorityQueue<T> {
     }
 
     /**
-     * 3 variables because we want a visual and aesthetic sight
+     *
      * @param pos int
      */
     private void minHeapify(int pos) {
-        Element p = heap[pos]; // Facundo: los cambie al element porque pueden ser null y el priority va a tirar nullpointerexception
+        Element p = heap[pos];
         Element l = heap[left(pos)];
         Element r = heap[right(pos)];
 
