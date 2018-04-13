@@ -12,17 +12,17 @@ import java.lang.reflect.Array;
  *
  * @param <T> generic
  */
-public class MinHeap<T> {
+public class HeapPriorityQueue<T> {
     private Element[] heap;
     private int current;
-    private final int max;
+    private int max;
 
     /**
      * constructor
      * @param max int
      */
     @SuppressWarnings("unchecked")
-    public MinHeap(int max) {
+    public HeapPriorityQueue(int max) {
         heap = (Element[]) Array.newInstance(Element.class, max);
         this.max = max;
     }
@@ -97,10 +97,14 @@ public class MinHeap<T> {
     /**
      * @param value generic
      * @param priority priority to be attached to the generic element
-     * @throws HeapFullException because we dont want to fix it
      */
-    public void insert(T value, double priority) throws HeapFullException {
-        if (current >= max) throw new HeapFullException();
+    @SuppressWarnings("unchecked")
+    public void enQueue(T value, double priority){
+        if (current >= max){
+            Element[] temp = (Element[] )Array.newInstance(Element.class,max*2);
+            System.arraycopy(temp,0,temp,0,max);
+            max *= 2;
+        }
         Element temp = new Element(value, priority);
         heap[current] = temp;
         correct(current++);
