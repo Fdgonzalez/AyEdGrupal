@@ -62,18 +62,20 @@ public class MinHeap<T> {
      * @param pos int
      */
     private void minHeapify(int pos) {
-        double p = heap[pos].priority;
-        double l = heap[left(pos)].priority;
-        double r = heap[right(pos)].priority;
+        Element p = heap[pos]; // Facundo: los cambie al element porque pueden ser null y el priority va a tirar nullpointerexception
+        Element l = heap[left(pos)];
+        Element r = heap[right(pos)];
 
         if (isLeaf(pos) || pos >= current) return;
-        if (heap[right(pos)] == null) {
-            if (p >= l) {
+        if (r == null) {
+            if (p.priority >= l.priority) {
                 swap(left(pos), pos);
                 minHeapify(left(pos));
+                return;
             }
-        } if (p >= r || p >= l) {
-            if (l <= r) {
+            return;
+        } if (p.priority >= r.priority || p.priority >= l.priority) {
+            if (l.priority <= r.priority) {
                 swap(left(pos), pos);
                 minHeapify(left(pos));
             } else {
