@@ -16,7 +16,7 @@ import java.util.Iterator;
  * @param <T> generic
  */
 public class BinaryTree<T> {
-    private DoubleNode root;
+    protected DoubleNode root;
 
     /**
      * Constructor vacio
@@ -60,7 +60,9 @@ public class BinaryTree<T> {
     public boolean isEmpty() {
         return this.root == null;
     }
-
+    public BinaryTree<T> getTree(){
+        return this;
+    }
     /**
      * @param elem generic
      */
@@ -134,13 +136,13 @@ public class BinaryTree<T> {
     public Iterator<T> inOrder(){
         return new Iterator<T>() {
             private Queue<T> queue = null;
-            private BinaryTree<T> tree = new BinaryTree<T>(root);
+            private BinaryTree<T> tree = getTree();
 
             private void generateQueue(BinaryTree<T> tree){
                 if(tree.isEmpty()) return;
                 generateQueue(tree.leftChild());
                 if(queue == null) queue = new Queue<T>();
-                queue.enqueue(tree.root.value);
+                queue.enqueue(tree.getRoot());
                 generateQueue(tree.rightChild());
             }
 
@@ -168,14 +170,14 @@ public class BinaryTree<T> {
      */
     public Iterator<T> preOrder() {
         return new Iterator<T>() {
-            private BinaryTree<T> tree= new BinaryTree<T>(root);
+            private BinaryTree<T> tree= getTree();
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
                 if (current.isEmpty()) return;
                 if(queue == null)
                     queue = new Queue<T>();
-                queue.enqueue(current.root.value);
+                queue.enqueue(current.getRoot());
                 generateQueue(current.leftChild());
                 generateQueue(current.rightChild());
             }
@@ -204,7 +206,7 @@ public class BinaryTree<T> {
      */
     public Iterator<T> postOrder() {
         return new Iterator<T>() {
-            private BinaryTree<T> tree= new BinaryTree<T>(root);
+            private BinaryTree<T> tree=getTree();
             private Queue<T> queue;
 
             void generateQueue(BinaryTree<T> current){
@@ -213,7 +215,7 @@ public class BinaryTree<T> {
                 generateQueue(current.rightChild());
                 if(queue == null)
                     queue = new Queue<>();
-                queue.enqueue(current.root.value);
+                queue.enqueue(current.getRoot());
             }
 
             @Override
@@ -234,10 +236,14 @@ public class BinaryTree<T> {
         };
     }
 
+    public T getRoot(){
+        return root.value;
+    }
+
     /**
      * Double Node nested class
      */
-    private class DoubleNode {
+    protected class DoubleNode {
         T value;
         DoubleNode left, right;
     }
