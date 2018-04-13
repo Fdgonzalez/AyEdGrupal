@@ -3,14 +3,15 @@ package TP03ArbolesColasYPilas;
 import java.util.NoSuchElementException;
 
 public class Queue<T> {
+    private Node head;
     private Node tail;
     public Queue(){
-        tail = null;
+        head = tail = null;
     }
     public void enqueue(T elem){
         Node temp = new Node(elem);
-        if(tail == null) {
-            tail = temp;
+        if(head == null) {
+            head = tail = temp;
             return;
         }
         temp.prev = tail;
@@ -20,11 +21,12 @@ public class Queue<T> {
     public T dequeue(){
         if(isEmpty())
             throw new NoSuchElementException();
-       T temp = tail.elem;
-       tail = tail.prev;//hace null a tail cuando es el ultimo elemento
-       if(tail != null)
-        tail.next = null;
-       return temp;
+        T temp = head.elem;
+        if(head != tail)
+            head = head.next;
+        else
+            head = tail = null;
+        return temp;
     }
     public boolean isEmpty(){
         return tail == null;
