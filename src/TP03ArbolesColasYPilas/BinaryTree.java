@@ -96,6 +96,7 @@ public class BinaryTree<T> {
     }
 
     /**
+     * exercise 1
      * @param level int
      */
     public void printLevel(int level){

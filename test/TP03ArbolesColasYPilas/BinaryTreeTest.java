@@ -12,6 +12,7 @@ public class BinaryTreeTest {
     @Test
     public void inOrder() {
         BinaryTree<Character> tree = new BinaryTree<Character>('F');
+
         tree.insertRight('G');
         BinaryTree<Character> right1 = tree.rightChild();
         right1.insertRight('I');
@@ -22,20 +23,20 @@ public class BinaryTreeTest {
         left1.insertRight('D');
         left1.rightChild().insertRight('E');
         left1.rightChild().insertLeft('C');
+
         Iterator<Character> postIt = tree.postOrder();
         Iterator<Character> preIt = tree.preOrder();
         Iterator<Character> inOrderIt = tree.inOrder();
-        while(inOrderIt.hasNext()){
-            System.out.print(inOrderIt.next());//ABCDEFGHI
-        }
+
+        while(inOrderIt.hasNext()) System.out.print(inOrderIt.next());  // ABCDEFGHI
+
         System.out.println();
 
-        while(preIt.hasNext()){//FBADCEGIH
-            System.out.print(preIt.next());
-        }
+        while(preIt.hasNext()) System.out.print(preIt.next()); // FBADCEGIH
+
         System.out.println();
-        while(postIt.hasNext()){//ACEDBHIGF
-            System.out.print(postIt.next());
-        }
+
+        while(postIt.hasNext()) System.out.print(postIt.next());  // ACEDBHIGF
+
     }
 }
