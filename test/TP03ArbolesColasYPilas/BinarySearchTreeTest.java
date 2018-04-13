@@ -2,7 +2,10 @@ package TP03ArbolesColasYPilas;
 
 
 import org.junit.Test;
+
 import java.util.Iterator;
+
+import static org.junit.Assert.*;
 
 /**
  * TP 03: Integracion de Arboles, Pilas y Colas.
@@ -25,7 +28,6 @@ public class BinarySearchTreeTest {
     @Test
     public void test(){
         BinarySearchTree<Character> t = new BinarySearchTree<>(Character::compareTo);
-
         t.insert('d');
         t.insert('c');
         t.insert('b');
@@ -38,9 +40,11 @@ public class BinarySearchTreeTest {
         t.insert('e');
 
         Iterator<Character> inOrder = t.inOrder();
-
+        char[] result = new char[10];
+        char[] expected = {'a','b','c','d','e','f','g','h','i','j'};
+        int i =0;
         while(inOrder.hasNext())
-            System.out.println(inOrder.next());
+           result[i++] = inOrder.next();
+        assertArrayEquals(expected,result);
     }
-
 }

@@ -2,7 +2,12 @@ package TP03ArbolesColasYPilas;
 
 
 import org.junit.Test;
+
+import java.util.Arrays;
 import java.util.Iterator;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * TP 03: Integracion de Arboles, Pilas y Colas.
@@ -22,7 +27,7 @@ public class BinaryTreeTest {
            C   E  H       */
     @Test
     public void inOrder() {
-        BinaryTree<Character> tree = new BinaryTree<Character>('D');
+        BinaryTree<Character> tree = new BinaryTree<Character>('F');
         tree.insertRight('G');
         BinaryTree<Character> right1 = tree.rightChild();
         right1.insertRight('I');
@@ -38,14 +43,24 @@ public class BinaryTreeTest {
         Iterator<Character> preIt = tree.preOrder();
         Iterator<Character> inOrderIt = tree.inOrder();
 
-        while(inOrderIt.hasNext()) System.out.print(inOrderIt.next());  // ABCDEFGHI
+        char[] result = new char[9];
+        char[] expectedInOrder = {'A','B','C','D','E','F','G','H','I'};
+        int i = 0;
 
-        System.out.println();
+        while(inOrderIt.hasNext())
+            result[i++] = inOrderIt.next();
+        assertArrayEquals(expectedInOrder,result);
 
-        while(preIt.hasNext()) System.out.print(preIt.next()); // FBADCEGIH
+        i=0;
+        char[] expectedPreOrder = {'F','B','A','D','C','E','G','I','H'};
+        while(preIt.hasNext())
+            result[i++] = preIt.next();
+        assertArrayEquals(expectedPreOrder,result);
 
-        System.out.println();
-
-        while(postIt.hasNext()) System.out.print(postIt.next());  // ACEDBHIGF
+        i=0;
+        char[] expectedPostOrder = {'A','C','E','D','B','H','I','G','F'};
+        while(postIt.hasNext())
+            result[i++] = postIt.next();
+        assertArrayEquals(expectedPostOrder,result);
     }
 }

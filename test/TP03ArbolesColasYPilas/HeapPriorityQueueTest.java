@@ -13,14 +13,14 @@ import org.junit.Test;
 public class HeapPriorityQueueTest {
     @Test
     public void minHeapTest() throws HeapFullException {
-        HeapPriorityQueue<Character> hippie = new HeapPriorityQueue<Character>(100);
+        HeapPriorityQueue<Character> heap = new HeapPriorityQueue<>(100);
 
-        hippie.enQueue('c', 1);
-        hippie.enQueue('a', 0);
-        hippie.enQueue('e', 4);
-        hippie.enQueue('d', 2);
-        hippie.enQueue('b', 0.1);
+        heap.enQueue('c', 1);
+        heap.enQueue('a', 0);
+        heap.enQueue('e', 4);
+        heap.enQueue('d', 2);
+        heap.enQueue('b', 0.1);
 
-        for (int i = 0; i < 5; i++) System.out.println(hippie.dequeue());
+        for (int i = 0; i < 5; i++) System.out.println(heap.dequeue());
     }
 }
