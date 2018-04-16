@@ -3,6 +3,8 @@ package TP03ArbolesColasYPilas;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * TP 03: Integracion de Arboles, Pilas y Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
@@ -20,7 +22,10 @@ public class HeapPriorityQueueTest {
         heap.enQueue('e', 4);
         heap.enQueue('d', 2);
         heap.enQueue('b', 0.1);
-
-        for (int i = 0; i < 5; i++) System.out.println(heap.dequeue());
+        assertEquals('a',(char) heap.dequeue());
+        assertEquals('b',(char) heap.dequeue());
+        assertEquals('c',(char) heap.dequeue());
+        assertEquals('d',(char) heap.dequeue());
+        assertEquals('e',(char) heap.dequeue());
     }
 }

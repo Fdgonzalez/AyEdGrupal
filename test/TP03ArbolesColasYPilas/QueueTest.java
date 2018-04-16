@@ -20,9 +20,9 @@ public class QueueTest {
         a.enqueue(2);
         a.enqueue(3);
 
-        System.out.println(a.dequeue());
-        System.out.println(a.dequeue());
-        System.out.println(a.dequeue());
+        assertEquals(1,(int) a.dequeue());
+        assertEquals(2,(int) a.dequeue());
+        assertEquals(3,(int) a.dequeue());
 
         assertTrue(a.isEmpty());
     }
