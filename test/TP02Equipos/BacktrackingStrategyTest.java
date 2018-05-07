@@ -2,11 +2,12 @@ package TP02Equipos;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ParserTest {
+public class BacktrackingStrategyTest {
     @Test
     public void test1() throws InvalidResultException, NoMatchesException {
         String input = "2 1\n" +
@@ -66,10 +67,17 @@ public class ParserTest {
                 "-1";
         Parser p = new Parser(input);
         List<Validator> validators = p.ParseAll();
-        for(Validator v:validators){
-            v.solve();
-            v.print();
-        }
+        List<String> expectedResults = new ArrayList<>();
+        expectedResults.add("X");
+        expectedResults.add("2");
+        expectedResults.add("1");
+        expectedResults.add("1 X X 2");
+        expectedResults.add("1 1 2 2 2 2 X X X");
+        expectedResults.add("1 1 2 2 X 2 X X 2 X");
+      for(int i=0;i<6;i++){
+          validators.get(i).solve();
+          assertEquals(validators.get(i).toString(),expectedResults.get(i));
+      }
 
     }
     @Test
