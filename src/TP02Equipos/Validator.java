@@ -6,9 +6,8 @@ import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Strategies.BackTrackingStrategy;
 import TP02Equipos.Strategies.BruteForceStrategy;
-import TP02Equipos.Strategies.SolvingStrategyName;
+import TP02Equipos.Strategies.SolvingStrategy;
 import java.util.List;
-import static TP02Equipos.Strategies.SolvingStrategyName.BACKTRACKING;
 
 /**
  * TP02 Soccertable por Facundo Gonzalez y Juan Gabriel Ricci
@@ -18,7 +17,7 @@ import static TP02Equipos.Strategies.SolvingStrategyName.BACKTRACKING;
 public class Validator{
     private List<Match> matches;
     private List<Team> teams;
-    private SolvingStrategyName strategy;
+    private SolvingStrategy strategy;
 
     /**
      * Contructor for validating soccer table problem.
@@ -27,7 +26,7 @@ public class Validator{
     public Validator(List<Match> matches, List<Team> teams) {
         this.matches = matches;
         this.teams = teams;
-        this.strategy = BACKTRACKING;
+        this.strategy = new BackTrackingStrategy(matches, teams);
     }
 
     /**
@@ -35,21 +34,19 @@ public class Validator{
      * @throws InvalidStrategy strategy name does not exists.
      */
     public void solve() throws InvalidStrategy, InvalidResultException, NoMatchesException {
-        switch (this.strategy) {
-            case BACKTRACKING:
-                BackTrackingStrategy backTrackingStrategy = new BackTrackingStrategy(matches, teams);
-                backTrackingStrategy.solve();
-                break;
-            case BRUTEFORCE:
-                BruteForceStrategy bruteForceStrategy = new BruteForceStrategy(matches, teams);
-                bruteForceStrategy.solve();
-                break;
-            default: throw new InvalidStrategy();
-        }
+        strategy.solve();
     }
 
-    public void swapStrategy(SolvingStrategyName strategyName) {
-        this.strategy = strategyName;
+    public void swapStrategy(SolvingStrategy solvingStrategy) {
+        this.strategy = solvingStrategy;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
     }
 
     public void print() {

@@ -4,7 +4,6 @@ package TP02Equipos;
 import TP02Equipos.Exceptions.InvalidResultException;
 import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Exceptions.NoMatchesException;
-import TP02Equipos.Strategies.SolvingStrategyName;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;

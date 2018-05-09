@@ -5,7 +5,6 @@ import TP02Equipos.Exceptions.InvalidResultException;
 import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Strategies.BruteForceStrategy;
-import TP02Equipos.Strategies.SolvingStrategyName;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +80,7 @@ public class BruteForceStrategyTest {
         expectedResults.add("1 1 2 2 X 2 X X 2 X");
         for(int i=0;i<6;i++){
             Validator current = validators.get(i);
-            current.swapStrategy(SolvingStrategyName.BRUTEFORCE);
+            current.swapStrategy(new BruteForceStrategy(current.getMatches(), current.getTeams()));
             System.out.println(current.toString());
             current.solve();
         }
@@ -123,9 +122,26 @@ public class BruteForceStrategyTest {
                 "Barcelona Betis\n" + "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.swapStrategy(SolvingStrategyName.BRUTEFORCE);
+        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
         v.solve();
         v.print();
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
+    }
+
+    @Test
+    public void test3() throws InvalidStrategy, InvalidResultException, NoMatchesException {
+        String input = "3 3\n" +
+                "EquipoA 6\n" +
+                "EquipoB 3\n" +
+                "EquipoC 0\n" +
+                "EquipoA EquipoB\n" +
+                "EquipoB EquipoC\n" +
+                "EquipoC EquipoA\n" + "\n" + "-1";
+        Parser p = new Parser(input);
+        Validator v = p.parseNext();
+        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
+        v.solve();
+        v.print();
+        assertEquals("1 1 2", v.toString());
     }
 }
