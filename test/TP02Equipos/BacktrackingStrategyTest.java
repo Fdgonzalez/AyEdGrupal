@@ -1,15 +1,19 @@
 package TP02Equipos;
 
-import org.junit.Test;
 
+import TP02Equipos.Exceptions.InvalidResultException;
+import TP02Equipos.Exceptions.InvalidStrategy;
+import TP02Equipos.Exceptions.NoMatchesException;
+import TP02Equipos.Strategies.SolvingStrategyName;
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
+
 
 public class BacktrackingStrategyTest {
     @Test
-    public void test1() throws InvalidResultException, NoMatchesException {
+    public void test1() throws InvalidResultException, NoMatchesException, InvalidStrategy {
         String input = "2 1\n" +
                 "Barcelona 1\n" +
                 "Madrid 1\n" +
@@ -74,14 +78,15 @@ public class BacktrackingStrategyTest {
         expectedResults.add("1 X X 2");
         expectedResults.add("1 1 2 2 2 2 X X X");
         expectedResults.add("1 1 2 2 X 2 X X 2 X");
-      for(int i=0;i<6;i++){
-          validators.get(i).solve();
-          assertEquals(validators.get(i).toString(),expectedResults.get(i));
-      }
 
+        for(int i=0; i < 6; i++) {
+            validators.get(i).solve(SolvingStrategyName.BACKTRACKING);
+            assertEquals(validators.get(i).toString(), expectedResults.get(i));
+        }
     }
+
     @Test
-    public void test2() throws InvalidResultException, NoMatchesException {
+    public void test2() throws InvalidResultException, NoMatchesException, InvalidStrategy {
         String input = "10 18\n" +
                 "Deportivo 11\n" +
                 "Betis 9\n" +
@@ -113,8 +118,9 @@ public class BacktrackingStrategyTest {
                 "Barcelona Betis\n" + "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.solve();
+        v.solve(SolvingStrategyName.BACKTRACKING);
         v.print();
-        assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
+
+        assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X", v.toString());
     }
 }

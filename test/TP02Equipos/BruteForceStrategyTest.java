@@ -1,11 +1,14 @@
 package TP02Equipos;
 
-import org.junit.Test;
 
+import TP02Equipos.Exceptions.InvalidResultException;
+import TP02Equipos.Exceptions.NoMatchesException;
+import TP02Equipos.Strategies.BruteForceStrategy;
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
+
 
 public class BruteForceStrategyTest {
     @Test
