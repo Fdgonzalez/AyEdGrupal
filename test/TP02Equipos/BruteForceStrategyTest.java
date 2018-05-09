@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BruteForceStrategyTest {
     @Test
-    public void test1() throws InvalidStrategy {
+    public void test1() throws InvalidStrategy, InvalidResultException, NoMatchesException {
         String input = "2 1\n" +
                 "Barcelona 1\n" +
                 "Madrid 1\n" +
@@ -91,7 +91,7 @@ public class BruteForceStrategyTest {
 
     }
     @Test
-    public void test2() throws InvalidStrategy {
+    public void test2() throws InvalidStrategy, InvalidResultException, NoMatchesException {
         String input = "10 18\n" +
                 "Deportivo 11\n" +
                 "Betis 9\n" +

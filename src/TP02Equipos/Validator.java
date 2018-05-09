@@ -1,7 +1,9 @@
 package TP02Equipos;
 
 
+import TP02Equipos.Exceptions.InvalidResultException;
 import TP02Equipos.Exceptions.InvalidStrategy;
+import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Strategies.BackTrackingStrategy;
 import TP02Equipos.Strategies.BruteForceStrategy;
 import TP02Equipos.Strategies.SolvingStrategyName;
@@ -32,13 +34,15 @@ public class Validator{
      * Solve method, it depends on the given strategy.
      * @throws InvalidStrategy strategy name does not exists.
      */
-    public void solve() throws InvalidStrategy {
+    public void solve() throws InvalidStrategy, InvalidResultException, NoMatchesException {
         switch (this.strategy) {
             case BACKTRACKING:
                 BackTrackingStrategy backTrackingStrategy = new BackTrackingStrategy(matches, teams);
+                backTrackingStrategy.solve();
                 break;
             case BRUTEFORCE:
                 BruteForceStrategy bruteForceStrategy = new BruteForceStrategy(matches, teams);
+                bruteForceStrategy.solve();
                 break;
             default: throw new InvalidStrategy();
         }
