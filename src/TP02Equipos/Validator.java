@@ -1,14 +1,12 @@
 package TP02Equipos;
 
 
-import TP02Equipos.Exceptions.InvalidResultException;
-import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Strategies.BackTrackingStrategy;
 import TP02Equipos.Strategies.BruteForceStrategy;
 import TP02Equipos.Strategies.SolvingStrategyName;
-
 import java.util.List;
+import static TP02Equipos.Strategies.SolvingStrategyName.BACKTRACKING;
 
 /**
  * TP02 Soccertable por Facundo Gonzalez y Juan Gabriel Ricci
@@ -18,24 +16,24 @@ import java.util.List;
 public class Validator{
     private List<Match> matches;
     private List<Team> teams;
+    private SolvingStrategyName strategy;
 
     /**
      * Contructor for validating soccer table problem.
+     * The default strategy is backtracking
      */
-    public Validator(List<Match> matches, List<Team> teams){
+    public Validator(List<Match> matches, List<Team> teams) {
         this.matches = matches;
         this.teams = teams;
+        this.strategy = BACKTRACKING;
     }
 
     /**
      * Solve method, it depends on the given strategy.
-     * @param strategyName desidered strategy to be used.
-     * @throws NoMatchesException nothing to solve.
-     * @throws InvalidResultException is not victory, defeat or tie.
      * @throws InvalidStrategy strategy name does not exists.
      */
-    public void solve(SolvingStrategyName strategyName) throws NoMatchesException, InvalidResultException, InvalidStrategy {
-        switch (strategyName) {
+    public void solve() throws InvalidStrategy {
+        switch (this.strategy) {
             case BACKTRACKING:
                 BackTrackingStrategy backTrackingStrategy = new BackTrackingStrategy(matches, teams);
                 break;
@@ -46,14 +44,17 @@ public class Validator{
         }
     }
 
+    public void swapStrategy(SolvingStrategyName strategyName) {
+        this.strategy = strategyName;
+    }
 
-    public void print(){
+    public void print() {
         System.out.println(toString());
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(Match m:matches){
+        for(Match m: matches){
             sb.append(m.toString());
             sb.append(' ');
         }

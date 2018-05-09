@@ -5,7 +5,6 @@ import TP02Equipos.Exceptions.InvalidResultException;
 import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Match;
 import TP02Equipos.Team;
-
 import java.util.LinkedList;
 import java.util.List;
 

@@ -2,8 +2,10 @@ package TP02Equipos;
 
 
 import TP02Equipos.Exceptions.InvalidResultException;
+import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Exceptions.NoMatchesException;
 import TP02Equipos.Strategies.BruteForceStrategy;
+import TP02Equipos.Strategies.SolvingStrategyName;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BruteForceStrategyTest {
     @Test
-    public void test1() throws InvalidResultException, NoMatchesException {
+    public void test1() throws InvalidStrategy {
         String input = "2 1\n" +
                 "Barcelona 1\n" +
                 "Madrid 1\n" +
@@ -79,14 +81,17 @@ public class BruteForceStrategyTest {
         expectedResults.add("1 1 2 2 X 2 X X 2 X");
         for(int i=0;i<6;i++){
             Validator current = validators.get(i);
-            current.swapStrategy(new BruteForceStrategy(current.getMatches(),current.getTeams()));
-            validators.get(i).solve();
-            assertEquals(validators.get(i).toString(),expectedResults.get(i));
+            current.swapStrategy(SolvingStrategyName.BRUTEFORCE);
+            System.out.println(current.toString());
+            current.solve();
+        }
+        for(int i=0;i<6;i++){
+            assertEquals(validators.get(i).toString(), expectedResults.get(i));
         }
 
     }
     @Test
-    public void test2() throws InvalidResultException, NoMatchesException {
+    public void test2() throws InvalidStrategy {
         String input = "10 18\n" +
                 "Deportivo 11\n" +
                 "Betis 9\n" +
@@ -118,7 +123,7 @@ public class BruteForceStrategyTest {
                 "Barcelona Betis\n" + "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.swapStrategy(new BruteForceStrategy(v.getMatches(),v.getTeams()));
+        v.swapStrategy(SolvingStrategyName.BRUTEFORCE);
         v.solve();
         v.print();
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());

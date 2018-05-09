@@ -80,7 +80,7 @@ public class BacktrackingStrategyTest {
         expectedResults.add("1 1 2 2 X 2 X X 2 X");
 
         for(int i=0; i < 6; i++) {
-            validators.get(i).solve(SolvingStrategyName.BACKTRACKING);
+            validators.get(i).solve();
             assertEquals(validators.get(i).toString(), expectedResults.get(i));
         }
     }
@@ -118,7 +118,7 @@ public class BacktrackingStrategyTest {
                 "Barcelona Betis\n" + "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.solve(SolvingStrategyName.BACKTRACKING);
+        v.solve();
         v.print();
 
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X", v.toString());

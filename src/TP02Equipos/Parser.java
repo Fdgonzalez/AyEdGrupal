@@ -1,7 +1,14 @@
 package TP02Equipos;
 
+
 import java.util.*;
 
+/**
+ * TP02 Soccertable por Facundo Gonzalez y Juan Gabriel Ricci
+ *
+ * Clase Parser, recibe string y lo analiza dandome los
+ * partidos y equipos
+ */
 public class Parser {
     private String input;
     private Scanner scanner;
@@ -43,8 +50,8 @@ public class Parser {
     }
 
     /**
-     *
-     * @return
+     * Scans every match group and returns a list of
+     * validators
      */
     public List<Validator> ParseAll(){
         List<Validator> validators = new LinkedList<>();
