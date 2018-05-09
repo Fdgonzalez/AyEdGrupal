@@ -36,7 +36,7 @@ public class BruteForceStrategy implements SolvingStrategy {
     private boolean solveHelper(String currentOutcome, int length, int matchIndex) throws InvalidResultException {
         System.out.println(currentOutcome);
         if (matchIndex == length) return true;
-        else if (matchIndex < length - 1) {
+        else if (matchIndex < length) {
             if (matches.get(matchIndex).isPossible('X')) {
                 matches.get(matchIndex).setOutcome('X');
                 if (!solveHelper(currentOutcome + " X", length, matchIndex + 1)) {

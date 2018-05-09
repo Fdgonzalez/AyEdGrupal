@@ -119,7 +119,8 @@ public class BruteForceStrategyTest {
                 "Betis AthBilbao\n" +
                 "Valencia AtlMadrid\n" +
                 "RealSociedad Betis\n" +
-                "Barcelona Betis\n" + "\n" + "-1";
+                "Barcelona Betis\n" +
+                "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
         v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
@@ -143,5 +144,24 @@ public class BruteForceStrategyTest {
         v.solve();
         v.print();
         assertEquals("1 1 2", v.toString());
+    }
+
+    @Test
+    public void test4() throws InvalidStrategy, InvalidResultException, NoMatchesException {
+        String input = "4 3\n" +
+                "EquipoA 3\n" +
+                "EquipoB 3\n" +
+                "EquipoC 1\n" +
+                "EquipoD 1\n" +
+                "EquipoA EquipoB\n" +
+                "EquipoB EquipoC\n" +
+                "EquipoC EquipoD\n" +
+                "\n" + "-1";
+        Parser p = new Parser(input);
+        Validator v = p.parseNext();
+        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
+        v.solve();
+        v.print();
+        assertEquals("1 1 X", v.toString());
     }
 }
