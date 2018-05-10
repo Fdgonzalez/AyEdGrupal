@@ -20,6 +20,10 @@ public class Team {
         actual = 0;
     }
 
+    public boolean isPossible() {
+        return points == actual;
+    }
+
     /**
      * verifies if the value given does not surpass
      * my goal value.

@@ -132,9 +132,9 @@ public class BruteForceStrategyTest {
     @Test
     public void test3() throws InvalidStrategy, InvalidResultException, NoMatchesException {
         String input = "3 3\n" +
-                "EquipoA 6\n" +
-                "EquipoB 3\n" +
-                "EquipoC 0\n" +
+                "EquipoA 4\n" +
+                "EquipoB 1\n" +
+                "EquipoC 2\n" +
                 "EquipoA EquipoB\n" +
                 "EquipoB EquipoC\n" +
                 "EquipoC EquipoA\n" + "\n" + "-1";
@@ -143,7 +143,7 @@ public class BruteForceStrategyTest {
         v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
         v.solve();
         v.print();
-        assertEquals("1 1 2", v.toString());
+        assertEquals("1 X X", v.toString());
     }
 
     @Test

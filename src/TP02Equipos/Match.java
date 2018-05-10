@@ -2,6 +2,7 @@ package TP02Equipos;
 
 
 import TP02Equipos.Exceptions.InvalidResultException;
+import TP02Equipos.Exceptions.InvalidStrategy;
 
 /**
  * TP02 Soccertable por Facundo Gonzalez y Juan Gabriel Ricci
@@ -46,6 +47,10 @@ public class Match {
         return outcome + "";
     }
 
+    public boolean isPossible() {
+        return local.isPossible() && visitor.isPossible();
+    }
+
     /**
      * Checks whether the outcome entered
      * @throws InvalidResultException not victory, defeat or tie.
@@ -67,6 +72,7 @@ public class Match {
             case 'X': local.undo(1); visitor.undo(1);break;
             case '1': local.undo(3);break;
             case '2': visitor.undo(3);break;
-        } this.outcome = 0;
+        }
+        this.outcome = '\u0000';
     }
 }
