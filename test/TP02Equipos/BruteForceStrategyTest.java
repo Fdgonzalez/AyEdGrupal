@@ -125,7 +125,6 @@ public class BruteForceStrategyTest {
         Validator v = p.parseNext();
         v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
-        v.print();
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
     }
 
@@ -142,7 +141,6 @@ public class BruteForceStrategyTest {
         Validator v = p.parseNext();
         v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
-        v.print();
         assertEquals("1 X X", v.toString());
     }
 
@@ -161,7 +159,6 @@ public class BruteForceStrategyTest {
         Validator v = p.parseNext();
         v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
-        v.print();
         assertEquals("1 1 X", v.toString());
     }
 }

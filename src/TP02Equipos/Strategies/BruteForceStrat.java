@@ -3,19 +3,16 @@ package TP02Equipos.Strategies;
 import TP02Equipos.Match;
 import TP02Equipos.Team;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BruteForceStrat implements SolvingStrategy{
     private List<Match> matches;
     private List<Team> teams;
-    private List<String> allPosibleOutcomes;
     private final char[] outcomes = {'X','1','2'};
 
     public BruteForceStrat(List<Match> matches, List<Team> teams) {
         this.matches = matches;
         this.teams = teams;
-        allPosibleOutcomes = new ArrayList<>();
     }
     public void solve(){
         generateAllPosible();
