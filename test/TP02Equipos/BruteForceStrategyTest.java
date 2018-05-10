@@ -4,6 +4,7 @@ package TP02Equipos;
 import TP02Equipos.Exceptions.InvalidResultException;
 import TP02Equipos.Exceptions.InvalidStrategy;
 import TP02Equipos.Exceptions.NoMatchesException;
+import TP02Equipos.Strategies.BruteForceStrat;
 import TP02Equipos.Strategies.BruteForceStrategy;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -80,8 +81,7 @@ public class BruteForceStrategyTest {
         expectedResults.add("1 1 2 2 X 2 X X 2 X");
         for(int i=0;i<6;i++){
             Validator current = validators.get(i);
-            current.swapStrategy(new BruteForceStrategy(current.getMatches(), current.getTeams()));
-            System.out.println(current.toString());
+            current.swapStrategy(new BruteForceStrat(current.getMatches(), current.getTeams()));
             current.solve();
         }
         for(int i=0;i<6;i++){
@@ -123,7 +123,7 @@ public class BruteForceStrategyTest {
                 "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
+        v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
         v.print();
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
@@ -140,7 +140,7 @@ public class BruteForceStrategyTest {
                 "EquipoC EquipoA\n" + "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
+        v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
         v.print();
         assertEquals("1 X X", v.toString());
@@ -159,7 +159,7 @@ public class BruteForceStrategyTest {
                 "\n" + "-1";
         Parser p = new Parser(input);
         Validator v = p.parseNext();
-        v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
+        v.swapStrategy(new BruteForceStrat(v.getMatches(), v.getTeams()));
         v.solve();
         v.print();
         assertEquals("1 1 X", v.toString());
