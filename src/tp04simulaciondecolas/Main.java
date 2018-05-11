@@ -1,4 +1,4 @@
-package tp04simuladociondecolas;
+package tp04simulaciondecolas;
 
 
 public class Main {
