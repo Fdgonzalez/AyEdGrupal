@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * TP02 Soccertable por Facundo Gonzalez y Juan Gabriel Ricci
  *
- * Clase Parser, recibe string y lo analiza dandome los
+ * Clase IO, recibe string y lo analiza dandome los
  * partidos y equipos
  */
 public class Parser {
