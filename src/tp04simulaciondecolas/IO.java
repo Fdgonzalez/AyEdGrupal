@@ -32,7 +32,7 @@ public class IO {
      * MAX_QUEUE_LENGTH
      * CASHIER_TOTAL_LEISURE_TIME
      */
-    public IO(String input, String output) throws IOException {
+    public IO(String input, String output){
         try {
             // file reader
             Path path = Paths.get(input);
@@ -43,6 +43,7 @@ public class IO {
             this.fileWriter = new FileWriter(output);
         } catch (IOException e) {
             System.out.println("wrong input/output file");
+            System.exit(-1);
         }
 
     }
