@@ -57,7 +57,7 @@ public class Queue<T> {
     }
 
     public int length() {
-        return 0;
+        return length;
     }
 
     /**

@@ -11,6 +11,7 @@ public class Cashier {
     private int currentClientTime;//time it will take to serve this client
     private int currentClientActualTime;//time the client has been a the cashier so far
     private int idleTime;
+    private int queueMaxLength;
 
     public Cashier(int cashierMinTime, int cashierMaxTime) {
         currentClient = null;
@@ -21,12 +22,14 @@ public class Cashier {
         idleTime = 0;
     }
     public void addClient(Client client){
-        if(currentClient == null){
+        if(currentClient == null && clientQueue.isEmpty()){
             currentClient = client;
             currentClientTime = (int) (Math.random() * (maxTime - minTime + 1))+ minTime;
             currentClientActualTime = 0;
         }else{
             clientQueue.enqueue(client);
+            if(clientQueue.length() > queueMaxLength)
+                queueMaxLength = clientQueue.length();
         }
     }
     public void update(int currentTime) {
@@ -56,5 +59,9 @@ public class Cashier {
 
     public int getIdleTime() {
         return idleTime;
+    }
+
+    public int getQueueMaxLength() {
+        return queueMaxLength;
     }
 }

@@ -33,7 +33,7 @@ public class Main extends Application {
         //IO io = new IO(fileIn, fileOut);
         //TODO: fill io object (io.read(void))
         //WARNING: HARDCODED TEST
-        Supermarket supermarket = new Supermarket(1, 0.7, 10, 30);//TODO: GET THIS FROM IO (supermarket = io.getSupermarket)
+        Supermarket supermarket = new Supermarket(4, 0.5, 6, 14);//TODO: GET THIS FROM IO (supermarket = io.getSupermarket)
         int simulationLength = 40; // TODO: GET THIS FROM THE IO (simlength = io.getsimlength())
         int currentTime = 0; // current time unit
         while (currentTime < simulationLength) {

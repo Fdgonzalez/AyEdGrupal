@@ -23,17 +23,12 @@ public class Supermarket {
             Client newClient = new Client(currentTime);
             clients.push(newClient);
             int length = cashiers[0].getQueueLength();
-            if(length > queueMaxLength)
-                queueMaxLength = length;
             int shortestQueue = 0;
             for(int i=1;i<cashiers.length;i++){
                 int currentQueueLength = cashiers[i].getQueueLength();
                 if(currentQueueLength < length){
                     length = cashiers[i].getQueueLength();
                     shortestQueue = i;
-                }
-                if(currentQueueLength > queueMaxLength){
-                    queueMaxLength = cashiers[i].getQueueLength();
                 }
             }
             cashiers[shortestQueue].addClient(newClient);
@@ -55,10 +50,16 @@ public class Supermarket {
                 totalSpentInQueue += c.getTimeSpentInQueue();
             }
         }
-        timeSpentInQueueAverage = totalSpentInQueue / clientsThatReachedACashier;
+        if(clientsThatReachedACashier > 0)
+            timeSpentInQueueAverage = totalSpentInQueue / clientsThatReachedACashier;
+        else
+            timeSpentInQueueAverage = 0;
         for(Cashier c : cashiers){
             queueLengthAverageAtEnd += c.getQueueLength();
             totalIdleTime += c.getIdleTime();
+            if(c.getQueueMaxLength() > queueMaxLength){
+                queueMaxLength = c.getQueueMaxLength();
+            }
         }
         queueLengthAverageAtEnd /= cashiers.length;
 

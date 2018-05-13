@@ -13,7 +13,7 @@ public class Client {
     //time is the time unit in which the client reached the cashier
     public void reachedCashier(int time) {
         reachedCashier = true;
-        timeSpentInQueue = timeCreated - time;
+        timeSpentInQueue = time - timeCreated;
     }
     public void finished(){
         finished = true;
