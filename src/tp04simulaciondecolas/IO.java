@@ -54,11 +54,11 @@ public class IO {
 
     private char[] nextData() throws IOException {
         char[] input = {};
-        while (true) {
-            Character current = (char) bufferedReader.read();
-            if (current.equals('\n')) break;
+        int current;
+        while (( current = bufferedReader.read()) != -1) {
+            if (current == '\n') break;
             input = Arrays.copyOf(input,input.length+ 1);
-            input[input.length-1] = current;
+            input[input.length-1] = (char) current;
         }
         return input;
     }
@@ -90,13 +90,14 @@ public class IO {
         else inputData.add(chanceToArrive);
 
         // MIN_TIME_TO_ATTEND_CLIENT
-        int minTimeToAttend = Integer.parseInt(new String(nextData()));
+        String[] minMax = new String(nextData()).split(" ");
+        int minTimeToAttend = Integer.parseInt(minMax[0]);
         if (minTimeToAttend < 0) throw new InvalidFileInData("Minimum time to attend cant be negative!");
         else if (minTimeToAttend == 0) System.out.println("Thats so fast I cant even see it!");
         else inputData.add(minTimeToAttend);
 
         // MAX_TIME_TO_ATTEND_CLIENT
-        int maxTimeToAttend = Integer.parseInt(new String(nextData()));
+        int maxTimeToAttend = Integer.parseInt(minMax[1]);
         if (maxTimeToAttend < 0) throw new InvalidFileInData("Maximum time to attend cant be negative!");
         else if (maxTimeToAttend == 0) System.out.println("Cashiers truly are god!");
         else inputData.add(maxTimeToAttend);
