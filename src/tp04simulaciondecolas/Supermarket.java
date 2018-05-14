@@ -37,15 +37,15 @@ public class Supermarket {
             cashier.update(currentTime);
         }
     }
-    public void finish(){
+    public void finish(){//TODO: el promedio de colas no es al final, es sobre el total
         int clientsThatReachedACashier = 0;
         totalClients = clients.length();
         int totalSpentInQueue = 0; // sum of all times clients that reached a cashier spent in a queue
         while(!clients.isEmpty()){
             Client c = clients.pop();
-            if(c.leftCashier())
+            if(c.hasLeftStore())
                 clientsServiced++;
-            if(c.reachedCashier()){
+            if(c.hasReachedCashier()){
                 clientsThatReachedACashier++;
                 totalSpentInQueue += c.getTimeSpentInQueue();
             }

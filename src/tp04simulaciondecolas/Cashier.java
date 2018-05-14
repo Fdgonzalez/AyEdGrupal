@@ -44,10 +44,10 @@ public class Cashier {
             }
         }
         if(currentClientActualTime == 0)
-            currentClient.reachedCashier(currentTime); // only update this the first time
+            currentClient.reachedCashierAt(currentTime); // only update this the first time
         currentClientActualTime++;
         if(currentClientActualTime >= currentClientTime){
-            currentClient.finished();
+            currentClient.finishedBuying();
             currentClient = null;
         }
 
