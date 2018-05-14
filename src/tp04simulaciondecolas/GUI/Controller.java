@@ -1,4 +1,4 @@
-package tp04simulaciondecolas;
+package tp04simulaciondecolas.GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,5 +1,7 @@
 package tp04simulaciondecolas;
 
+import tp04simulaciondecolas.GUI.Controller;
+
 public class Main {
 
     /**
