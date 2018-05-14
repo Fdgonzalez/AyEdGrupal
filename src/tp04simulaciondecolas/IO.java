@@ -1,8 +1,8 @@
 package tp04simulaciondecolas;
 
 
+import tp04simulaciondecolas.Utils.List;
 import tp04simulaciondecolas.exceptions.InvalidFileInData;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,20 +10,26 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 /**
- * fileIn template
+ * TP04 Simulacion de Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
  *
+ * -------------------------------------------------------------------
+ * fileIn template
  * NUMBER_OF_CASHIERS
  * SIMULATION_TIME
  * CHANCE_OF_CLIENT_TO_ARRIVE
  * MIN_TIME_TO_ATTEND_CLIENT MAX_TIME_TO_ATTEND_CLIENT
  *
- *
+ * fileOut template
  * Cantidad de usuarios que arribaron: NUMBER_OF_TOTAL_CLIENTS_ARRIVED
  * Cantidad de usuarios atendidos: NUMBER_OF_TOTAL_ATTENDED_CLIENTS
  * AVERAGE_WAIT_TIME
  * AVERAGE_WAIT_QUEUE_LENGTH
  * MAX_QUEUE_LENGTH
  * CASHIER_TOTAL_LEISURE_TIME
+ * -------------------------------------------------------------------
+ *
+ * Clase IO, interpreta archivo de entrada y escribe en archivo de salida.
  */
 public class IO {
     private BufferedReader bufferedReader;
@@ -52,6 +58,10 @@ public class IO {
 
     }
 
+    /**
+     * @return
+     * @throws IOException
+     */
     private char[] nextData() throws IOException {
         char[] input = {};
         int current;
@@ -118,11 +128,34 @@ public class IO {
         this.fileWriter.write(outputData.get(4) + "\n");  // MAX_QUEUE_LENGTH
         this.fileWriter.write(outputData.get(5) + "\n");  // CASHIER_TOTAL_LEISURE_TIME
     }
+
+    /**
+     * @param s
+     * @throws IOException
+     */
     public void write(String s) throws IOException {
         this.fileWriter.write(s);
     }
 
     public String toString() {
         return inputData.toString();
+    }
+
+    /**
+     * @return
+     */
+    public Supermarket getSupermarket() {
+        return new Supermarket(
+                (int) inputData.get(0),
+                (double) inputData.get(2),
+                (int) inputData.get(3),
+                (int) inputData.get(4));
+    }
+
+    /**
+     * @return
+     */
+    public int getSimulationLength() {
+        return (int) inputData.get(2);
     }
 }

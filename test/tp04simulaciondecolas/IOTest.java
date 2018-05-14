@@ -2,6 +2,7 @@ package tp04simulaciondecolas;
 
 
 import org.junit.Test;
+import tp04simulaciondecolas.Utils.List;
 import tp04simulaciondecolas.exceptions.InvalidFileInData;
 
 import java.io.IOException;

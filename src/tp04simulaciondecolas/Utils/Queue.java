@@ -1,4 +1,4 @@
-package tp04simulaciondecolas;
+package tp04simulaciondecolas.Utils;
 
 import java.util.NoSuchElementException;
 

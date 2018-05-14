@@ -1,9 +1,16 @@
 package tp04simulaciondecolas;
 
-import tp04simulaciondecolas.GUI.Controller;
 
+import tp04simulaciondecolas.GUI.Controller;
 import java.io.IOException;
 
+
+/**
+ * TP04 Simulacion de Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
+ * Clase main
+ */
 public class Main {
 
     /**
@@ -19,13 +26,14 @@ public class Main {
             usage();
         String fileIn = args[0];
         String fileOut = args[1];
-        IO io = new IO(fileIn, fileOut);
-        //TODO: fill io object (io.read(void))
-        Supermarket supermarket = io.getSupermarket();//TODO: GET THIS FROM IO (supermarket = io.getSupermarket)
-        int simulationLength = io.getSimulationLength(); // TODO: GET THIS FROM THE IO (simlength = io.getsimlength())
 
-        //TODO: JAVAFX PART, the code below parses the arguments, no idea how to use them in javafx
-        //TODO: probably you need to do the update (iterations) number of times then thread.sleep(ms)
+        IO io = new IO(fileIn, fileOut);
+        // TODO: fill io object (io.read(void))
+        Supermarket supermarket = io.getSupermarket();
+        int simulationLength = io.getSimulationLength();
+
+        // TODO: JAVAFX PART, the code below parses the arguments, no idea how to use them in javafx
+        // TODO: probably you need to do the update (iterations) number of times then thread.sleep(ms)
         if (args.length > 2) {
             if (args[2].charAt(0) != '-')
                 usage();
@@ -38,10 +46,10 @@ public class Main {
                 System.out.println("-n or ms argument not an integer number");
                 usage();
             }
-            Controller controller = new Controller(supermarket,simulationLength,iterations,ms);
+            Controller controller = new Controller(supermarket, simulationLength, iterations, ms);
             controller.start();
         }
-        if(args.length == 2) {
+        if (args.length == 2) {
             // if the simulation wasn't run just calculate everything 'instantly'
             int currentTime = 0; // current time unit
             while (currentTime < simulationLength) {

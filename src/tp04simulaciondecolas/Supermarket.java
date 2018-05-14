@@ -1,5 +1,15 @@
 package tp04simulaciondecolas;
 
+
+import tp04simulaciondecolas.Utils.ArrayStack;
+
+/**
+ * TP04 Simulacion de Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
+ * Clase supermercado
+ * todo javadoc
+ */
 public class Supermarket {
     private Cashier[] cashiers;
     private double newCustomerChance;
@@ -10,23 +20,34 @@ public class Supermarket {
     private int totalIdleTime;
     private int totalClients;
     private ArrayStack<Client> clients; // keep a reference to all clients to do the final calculations
-    public Supermarket(int cashierAmount, double newCustomerChance, int cashierMinTime, int cashierMaxTime){
+
+    /**
+     * @param cashierAmount
+     * @param newCustomerChance
+     * @param cashierMinTime
+     * @param cashierMaxTime
+     */
+    public Supermarket(int cashierAmount, double newCustomerChance, int cashierMinTime, int cashierMaxTime) {
         cashiers = new Cashier[cashierAmount];
         clients = new ArrayStack<>(10);
         this.newCustomerChance = newCustomerChance;
-        for(int i=0;i<cashierAmount;i++){
-            cashiers[i] = new Cashier(cashierMinTime,cashierMaxTime);
+        for (int i = 0; i < cashierAmount; i++) {
+            cashiers[i] = new Cashier(cashierMinTime, cashierMaxTime);
         }
     }
+
+    /**
+     * @param currentTime
+     */
     public void update(int currentTime) {
-        if(Math.random() <= newCustomerChance){
+        if (Math.random() <= newCustomerChance) {
             Client newClient = new Client(currentTime);
             clients.push(newClient);
             int length = cashiers[0].getQueueLength();
             int shortestQueue = 0;
-            for(int i=1;i<cashiers.length;i++){
+            for (int i = 1; i < cashiers.length; i++) {
                 int currentQueueLength = cashiers[i].getQueueLength();
-                if(currentQueueLength < length){
+                if (currentQueueLength < length) {
                     length = cashiers[i].getQueueLength();
                     shortestQueue = i;
                 }
@@ -37,35 +58,43 @@ public class Supermarket {
             cashier.update(currentTime);
         }
     }
-    public void finish(){//TODO: el promedio de colas no es al final, es sobre el total
+
+    /**
+     *
+     */
+    public void finish() {//TODO: el promedio de colas no es al final, es sobre el total
         int clientsThatReachedACashier = 0;
         totalClients = clients.length();
         int totalSpentInQueue = 0; // sum of all times clients that reached a cashier spent in a queue
-        while(!clients.isEmpty()){
+        while (!clients.isEmpty()) {
             Client c = clients.pop();
-            if(c.hasLeftStore())
+            if (c.hasLeftStore())
                 clientsServiced++;
-            if(c.hasReachedCashier()){
+            if (c.hasReachedCashier()) {
                 clientsThatReachedACashier++;
                 totalSpentInQueue += c.getTimeSpentInQueue();
             }
         }
-        if(clientsThatReachedACashier > 0)
+        if (clientsThatReachedACashier > 0)
             timeSpentInQueueAverage = totalSpentInQueue / clientsThatReachedACashier;
         else
             timeSpentInQueueAverage = 0;
-        for(Cashier c : cashiers){
+        for (Cashier c : cashiers) {
             queueLengthAverageAtEnd += c.getQueueLength();
             totalIdleTime += c.getIdleTime();
-            if(c.getQueueMaxLength() > queueMaxLength){
+            if (c.getQueueMaxLength() > queueMaxLength) {
                 queueMaxLength = c.getQueueMaxLength();
             }
         }
         queueLengthAverageAtEnd /= cashiers.length;
 
     }
+
+    /**
+     * @return
+     */
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Cantidad de usuarios que arribaron: ");
         sb.append(totalClients);
