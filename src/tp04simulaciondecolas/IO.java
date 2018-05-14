@@ -57,9 +57,8 @@ public class IO {
         while (true) {
             Character current = (char) bufferedReader.read();
             if (current.equals('\n')) break;
-            char[] temp = new char[input.length + 1];
-            temp[temp.length - 1] = current;
-            input = temp;
+            input = Arrays.copyOf(input,input.length+ 1);
+            input[input.length-1] = current;
         }
         return input;
     }
@@ -72,32 +71,32 @@ public class IO {
         inputData = new List<>();
 
         // NUMBER_OF_CASHIERS
-        int numberOfCashiers = Integer.parseInt(Arrays.toString(nextData()));
+        int numberOfCashiers = Integer.parseInt(new String(nextData()));
         if (numberOfCashiers < 0) throw new InvalidFileInData("Number of cashiers cant be negative!");
         else if (numberOfCashiers == 0) throw new InvalidFileInData("Number of cashiers is 0!");
         else inputData.add(numberOfCashiers);
 
         // SIMULATION_TIME
-        int simulationTime = Integer.parseInt(Arrays.toString(nextData()));
+        int simulationTime = Integer.parseInt(new String(nextData()));
         if (simulationTime < 0) throw new InvalidFileInData("Simulation time cant be negative!");
         else if (simulationTime == 0) throw new InvalidFileInData("Simulation time is 0!");
         else inputData.add(simulationTime);
 
         // CHANCE_OF_CLIENT_TO_ARRIVE
-        double chanceToArrive = Double.parseDouble(Arrays.toString(nextData()));
+        double chanceToArrive = Double.parseDouble(new String(nextData()));
         if (chanceToArrive < 0) throw new InvalidFileInData("Chance to arrive cant be negative!");
         else if (chanceToArrive == 0 || chanceToArrive > 1)
             throw new InvalidFileInData("Must be more than 0 and less than 1");
         else inputData.add(chanceToArrive);
 
         // MIN_TIME_TO_ATTEND_CLIENT
-        int minTimeToAttend = Integer.parseInt(Arrays.toString(nextData()));
+        int minTimeToAttend = Integer.parseInt(new String(nextData()));
         if (minTimeToAttend < 0) throw new InvalidFileInData("Minimum time to attend cant be negative!");
         else if (minTimeToAttend == 0) System.out.println("Thats so fast I cant even see it!");
         else inputData.add(minTimeToAttend);
 
         // MAX_TIME_TO_ATTEND_CLIENT
-        int maxTimeToAttend = Integer.parseInt(Arrays.toString(nextData()));
+        int maxTimeToAttend = Integer.parseInt(new String(nextData()));
         if (maxTimeToAttend < 0) throw new InvalidFileInData("Maximum time to attend cant be negative!");
         else if (maxTimeToAttend == 0) System.out.println("Cashiers truly are god!");
         else inputData.add(maxTimeToAttend);
