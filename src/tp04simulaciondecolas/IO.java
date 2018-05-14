@@ -34,7 +34,7 @@ import java.util.Arrays;
 public class IO {
     private BufferedReader bufferedReader;
     private FileWriter fileWriter;
-    private List<Object> inputData;
+    private int simulationTime;
 
     /**
      * Constructor
@@ -77,40 +77,36 @@ public class IO {
      * @return
      * @throws IOException
      */
-    public void read() throws IOException, InvalidFileInData {
-        inputData = new List<>();
+    public Supermarket read() throws IOException, InvalidFileInData {
 
         // NUMBER_OF_CASHIERS
         int numberOfCashiers = Integer.parseInt(new String(nextData()));
         if (numberOfCashiers < 0) throw new InvalidFileInData("Number of cashiers cant be negative!");
         else if (numberOfCashiers == 0) throw new InvalidFileInData("Number of cashiers is 0!");
-        else inputData.add(numberOfCashiers);
 
         // SIMULATION_TIME
         int simulationTime = Integer.parseInt(new String(nextData()));
         if (simulationTime < 0) throw new InvalidFileInData("Simulation time cant be negative!");
         else if (simulationTime == 0) throw new InvalidFileInData("Simulation time is 0!");
-        else inputData.add(simulationTime);
 
         // CHANCE_OF_CLIENT_TO_ARRIVE
         double chanceToArrive = Double.parseDouble(new String(nextData()));
         if (chanceToArrive < 0) throw new InvalidFileInData("Chance to arrive cant be negative!");
         else if (chanceToArrive == 0 || chanceToArrive > 1)
             throw new InvalidFileInData("Must be more than 0 and less than 1");
-        else inputData.add(chanceToArrive);
 
         // MIN_TIME_TO_ATTEND_CLIENT
         String[] minMax = new String(nextData()).split(" ");
         int minTimeToAttend = Integer.parseInt(minMax[0]);
         if (minTimeToAttend < 0) throw new InvalidFileInData("Minimum time to attend cant be negative!");
         else if (minTimeToAttend == 0) System.out.println("Thats so fast I cant even see it!");
-        else inputData.add(minTimeToAttend);
 
         // MAX_TIME_TO_ATTEND_CLIENT
         int maxTimeToAttend = Integer.parseInt(minMax[1]);
         if (maxTimeToAttend < 0) throw new InvalidFileInData("Maximum time to attend cant be negative!");
         else if (maxTimeToAttend == 0) System.out.println("Cashiers truly are god!");
-        else inputData.add(maxTimeToAttend);
+
+        return new Supermarket(numberOfCashiers, chanceToArrive, minTimeToAttend, maxTimeToAttend);
     }
 
     /**
@@ -138,24 +134,17 @@ public class IO {
     }
 
     public String toString() {
-        return inputData.toString();
-    }
-
-    /**
-     * @return
-     */
-    public Supermarket getSupermarket() {
-        return new Supermarket(
-                (int) inputData.get(0),
-                (double) inputData.get(2),
-                (int) inputData.get(3),
-                (int) inputData.get(4));
+        try {
+            return read().toString();
+        } catch (IOException | InvalidFileInData e) {
+            e.printStackTrace();
+        } return "";
     }
 
     /**
      * @return
      */
     public int getSimulationLength() {
-        return (int) inputData.get(2);
+        return simulationTime;
     }
 }
