@@ -11,18 +11,18 @@ public class Client {
         finished = false;
     }
     //time is the time unit in which the client reached the cashier
-    public void reachedCashier(int time) {
+    public void reachedCashierAt(int time) {
         reachedCashier = true;
         timeSpentInQueue = time - timeCreated;
     }
-    public void finished(){
+    public void finishedBuying(){
         finished = true;
     }
-    public boolean leftCashier(){
+    public boolean hasLeftStore(){
         return finished;
     }
 
-    public boolean reachedCashier() {
+    public boolean hasReachedCashier() {
         return reachedCashier;
     }
 
