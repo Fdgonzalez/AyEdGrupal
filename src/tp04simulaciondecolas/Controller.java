@@ -13,9 +13,9 @@ public class Controller extends Application {
     private BorderPane mainLayaut;
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+   public void start(){
+       launch();
+   }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
