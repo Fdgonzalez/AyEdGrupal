@@ -118,6 +118,9 @@ public class IO {
         this.fileWriter.write(outputData.get(4) + "\n");  // MAX_QUEUE_LENGTH
         this.fileWriter.write(outputData.get(5) + "\n");  // CASHIER_TOTAL_LEISURE_TIME
     }
+    public void write(String s) throws IOException {
+        this.fileWriter.write(s);
+    }
 
     public String toString() {
         return inputData.toString();
