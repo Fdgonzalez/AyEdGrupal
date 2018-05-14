@@ -1,21 +1,6 @@
 package tp04simulaciondecolas;
 
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ViewFXML.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
+public class Main {
 
     /**
      * Display command line usage help
@@ -55,7 +40,7 @@ public class Main extends Application {
                 System.out.println("-n or ms argument not an integer number");
                 usage();
             }
-            launch(args);
+            Controller controller = new Controller();
         }
         //TODO: END, write the results to a file
         //TODO:something like io.write(supermarket); or io.write(supermarket.toString())
