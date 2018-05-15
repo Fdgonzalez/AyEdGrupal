@@ -2,6 +2,8 @@ package tp04simulaciondecolas;
 
 
 import tp04simulaciondecolas.GUI.Controller;
+import tp04simulaciondecolas.exceptions.InvalidFileInData;
+
 import java.io.IOException;
 
 
@@ -28,12 +30,15 @@ public class Main {
         String fileOut = args[1];
 
         IO io = new IO(fileIn, fileOut);
-        // TODO: fill io object (io.read(void))
-        Supermarket supermarket = io.getSupermarket();
+        Supermarket supermarket = null;
+        try {
+            supermarket = io.read();
+        } catch (IOException | InvalidFileInData e) {
+            System.out.println("Invalid input file");
+            System.exit(1);
+        }
         int simulationLength = io.getSimulationLength();
 
-        // TODO: JAVAFX PART, the code below parses the arguments, no idea how to use them in javafx
-        // TODO: probably you need to do the update (iterations) number of times then thread.sleep(ms)
         if (args.length > 2) {
             if (args[2].charAt(0) != '-')
                 usage();
@@ -46,7 +51,8 @@ public class Main {
                 System.out.println("-n or ms argument not an integer number");
                 usage();
             }
-            Controller controller = new Controller(supermarket, simulationLength, iterations, ms);
+            Controller controller = new Controller();
+            controller.load(supermarket, simulationLength, iterations, ms);
             controller.start();
         }
         if (args.length == 2) {
@@ -62,8 +68,6 @@ public class Main {
         } catch (IOException e) {
             System.out.println("error writing output file");
         }
-        //TODO: END, write the results to a file
-        //TODO:something like io.write(supermarket); or io.write(supermarket.toString())
     }
 }
 
