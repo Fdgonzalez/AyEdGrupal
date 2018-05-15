@@ -4,7 +4,7 @@ package tp04simulaciondecolas.Utils;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase Lista generica
  */
 public class List<T> {
@@ -44,8 +44,7 @@ public class List<T> {
         if (node.value == null) {
             node.value = t;
             node.next = new Node();
-        }
-        else addHelper(t, node.next);
+        } else addHelper(t, node.next);
     }
 
     @SuppressWarnings("unchecked")

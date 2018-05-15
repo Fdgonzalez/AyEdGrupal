@@ -3,6 +3,7 @@ package tp04simulaciondecolas;
 
 import tp04simulaciondecolas.Utils.List;
 import tp04simulaciondecolas.exceptions.InvalidFileInData;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,14 +13,14 @@ import java.util.Arrays;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * -------------------------------------------------------------------
  * fileIn template
  * NUMBER_OF_CASHIERS
  * SIMULATION_TIME
  * CHANCE_OF_CLIENT_TO_ARRIVE
  * MIN_TIME_TO_ATTEND_CLIENT MAX_TIME_TO_ATTEND_CLIENT
- *
+ * <p>
  * fileOut template
  * Cantidad de usuarios que arribaron: NUMBER_OF_TOTAL_CLIENTS_ARRIVED
  * Cantidad de usuarios atendidos: NUMBER_OF_TOTAL_ATTENDED_CLIENTS
@@ -28,7 +29,7 @@ import java.util.Arrays;
  * MAX_QUEUE_LENGTH
  * CASHIER_TOTAL_LEISURE_TIME
  * -------------------------------------------------------------------
- *
+ * <p>
  * Clase IO, interpreta archivo de entrada y escribe en archivo de salida.
  */
 public class IO {
@@ -38,11 +39,12 @@ public class IO {
 
     /**
      * Constructor
-     * @param input file
+     *
+     * @param input  file
      * @param output file
-     * fileOut template
+     *               fileOut template
      */
-    public IO(String input, String output){
+    public IO(String input, String output) {
         try {
             // file reader
             Path path = Paths.get(input);
@@ -65,10 +67,10 @@ public class IO {
     private char[] nextData() throws IOException {
         char[] input = {};
         int current;
-        while (( current = bufferedReader.read()) != -1) {
+        while ((current = bufferedReader.read()) != -1) {
             if (current == '\n') break;
-            input = Arrays.copyOf(input,input.length+ 1);
-            input[input.length-1] = (char) current;
+            input = Arrays.copyOf(input, input.length + 1);
+            input[input.length - 1] = (char) current;
         }
         return input;
     }
@@ -138,7 +140,8 @@ public class IO {
             return read().toString();
         } catch (IOException | InvalidFileInData e) {
             e.printStackTrace();
-        } return "";
+        }
+        return "";
     }
 
     /**

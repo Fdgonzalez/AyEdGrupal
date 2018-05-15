@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase controlador, nexo entre la interfaz grafica y el resto del proyecto.
  */
 public class Controller extends Application {
@@ -21,9 +21,9 @@ public class Controller extends Application {
     private BorderPane mainLayaut;
 
 
-   public void start(){
-       launch();
-   }
+    public void start() {
+        launch();
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

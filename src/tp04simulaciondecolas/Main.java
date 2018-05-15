@@ -2,13 +2,14 @@ package tp04simulaciondecolas;
 
 
 import tp04simulaciondecolas.GUI.Controller;
+
 import java.io.IOException;
 
 
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase main
  */
 public class Main {

@@ -8,10 +8,9 @@ import java.util.NoSuchElementException;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * TODO javadoc de esto
  * Cajero
- *
  */
 public class Cashier {
     private Queue<Client> clientQueue;

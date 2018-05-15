@@ -3,7 +3,7 @@ package tp04simulaciondecolas;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase cliente
  * todo javadoc de esto
  */
