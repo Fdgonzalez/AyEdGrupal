@@ -42,7 +42,7 @@ public class IOTest {
         IO io1 = new IO("test_1.txt", "test_1_out.txt");
 //        IO io2 = new IO("test_2.txt", "test_2_out.txt");
 //        IO io3 = new IO("test_3.txt", "test_3_out.txt");
-        io1.read();
+        //io1.read();
 //        io2.read();
 //        io3.read();
         System.out.println("io1 is: " + io1.toString());
