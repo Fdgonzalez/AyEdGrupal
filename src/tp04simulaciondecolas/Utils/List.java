@@ -1,6 +1,12 @@
-package tp04simulaciondecolas;
+package tp04simulaciondecolas.Utils;
 
 
+/**
+ * TP04 Simulacion de Colas.
+ * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
+ *
+ * Clase Lista generica
+ */
 public class List<T> {
     private Node root;
     private int size;
