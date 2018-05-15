@@ -24,7 +24,7 @@ public class Controller extends Application {
     private int simulationLength;
     private int n;
     private int ms;
-    public Controller(Supermarket supermarket, int simulationLength, int n, int ms){
+    public void load(Supermarket supermarket, int simulationLength, int n, int ms){
         this.supermarket = supermarket;
         this.simulationLength = simulationLength;
         this.n = n;
