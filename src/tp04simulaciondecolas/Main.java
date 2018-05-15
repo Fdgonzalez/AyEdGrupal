@@ -2,7 +2,7 @@ package tp04simulaciondecolas;
 
 
 import tp04simulaciondecolas.GUI.Controller;
-import tp04simulaciondecolas.exceptions.InvalidFileInData;
+import tp04simulaciondecolas.exceptions.InvalidDataInFile;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        if (args.length < 2)
+        if (args.length < 2 || args.length > 4)
             usage();
         String fileIn = args[0];
         String fileOut = args[1];
@@ -33,7 +33,7 @@ public class Main {
         Supermarket supermarket = null;
         try {
             supermarket = io.read();
-        } catch (IOException | InvalidFileInData e) {
+        } catch (IOException | InvalidDataInFile e) {
             System.out.println("Invalid input file");
             System.exit(1);
         }
