@@ -111,4 +111,8 @@ public class Supermarket {
         sb.append(totalIdleTime);
         return sb.toString();
     }
+
+    public Cashier[] getCashiers() {
+        return cashiers;
+    }
 }

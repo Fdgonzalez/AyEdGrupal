@@ -86,4 +86,8 @@ public class Cashier {
     public int getQueueMaxLength() {
         return queueMaxLength;
     }
+
+    public boolean isIdle() {
+        return currentClient == null;
+    }
 }
