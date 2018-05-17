@@ -11,13 +11,13 @@ import java.nio.file.Paths;
 
 /**
  * fileIn template
- *
+ * <p>
  * NUMBER_OF_CASHIERS
  * SIMULATION_TIME
  * CHANCE_OF_CLIENT_TO_ARRIVE
  * MIN_TIME_TO_ATTEND_CLIENT MAX_TIME_TO_ATTEND_CLIENT
- *
- *
+ * <p>
+ * <p>
  * Cantidad de usuarios que arribaron: NUMBER_OF_TOTAL_CLIENTS_ARRIVED
  * Cantidad de usuarios atendidos: NUMBER_OF_TOTAL_ATTENDED_CLIENTS
  * AVERAGE_WAIT_TIME
@@ -29,13 +29,15 @@ public class IO {
     private BufferedReader bufferedReader;
     private FileWriter fileWriter;
     private int simulationTime;
+
     /**
      * Constructor
-     * @param input file
+     *
+     * @param input  file
      * @param output file
-     * fileOut template
+     *               fileOut template
      */
-    public IO(String input, String output){
+    public IO(String input, String output) {
         try {
             // file reader
             Path path = Paths.get(input);
@@ -48,12 +50,10 @@ public class IO {
             System.out.println("wrong input/output file");
             System.exit(-1);
         }
-
     }
 
     /**
-     * @return
-     * @throws IOException
+     * gets data from file and creates a Supermarket with it
      */
     public Supermarket read() throws IOException, InvalidDataInFile {
 
@@ -81,18 +81,28 @@ public class IO {
         // MAX_TIME_TO_ATTEND_CLIENT
         int maxTimeToAttend = Integer.parseInt(minMax[1]);
         if (maxTimeToAttend < 0) throw new InvalidDataInFile("Maximum time to attend cant be negative!");
-        if(maxTimeToAttend<minTimeToAttend){
+        if (maxTimeToAttend < minTimeToAttend) {
             throw new InvalidDataInFile("Minimum cashier time is greater than the max");
         }
         bufferedReader.close();
 
-        return new Supermarket(numberOfCashiers,chanceToArrive,minTimeToAttend,maxTimeToAttend);
+        // test purposes
+        List<Object> list = new List<>();
+        list.add(numberOfCashiers);
+        list.add(simulationTime);
+        list.add(chanceToArrive);
+        list.add(minTimeToAttend);
+        list.add(maxTimeToAttend);
+
+        return new Supermarket(numberOfCashiers, chanceToArrive, minTimeToAttend, maxTimeToAttend);
     }
+
 
     public void write(String s) throws IOException {
         fileWriter.write(s);
         fileWriter.close();
     }
+
     public int getSimulationLength() {
         return simulationTime;
     }

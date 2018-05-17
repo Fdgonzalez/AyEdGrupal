@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * TP 04: Simulacion de colas, Pilas y Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase auxiliar Queue con Nodos doblemente encadenados.
  *
  * @param <T> generic
@@ -13,10 +13,11 @@ import java.util.NoSuchElementException;
 public class Queue<T> {
     private Node head, tail;
     private int length;
+
     /**
      * empty queue constructor
      */
-    public Queue(){
+    public Queue() {
         head = tail = null;
         length = 0;
     }
@@ -24,11 +25,12 @@ public class Queue<T> {
 
     /**
      * adds element to the queue
+     *
      * @param elem generic
      */
-    public void enqueue(T elem){
+    public void enqueue(T elem) {
         Node temp = new Node(elem);
-        if(head == null) head = tail = temp;
+        if (head == null) head = tail = temp;
         else {
             temp.prev = tail;
             tail.next = temp;
@@ -40,10 +42,10 @@ public class Queue<T> {
     /**
      * @return generic
      */
-    public T dequeue(){
-        if(isEmpty()) throw new NoSuchElementException();
+    public T dequeue() {
+        if (isEmpty()) throw new NoSuchElementException();
         T temp = head.elem;
-        if(head != tail) head = head.next;
+        if (head != tail) head = head.next;
         else head = tail = null;
         length--;
         return temp;
@@ -52,7 +54,7 @@ public class Queue<T> {
     /**
      * @return whether this queue is empty
      */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return tail == null;
     }
 
@@ -68,7 +70,7 @@ public class Queue<T> {
         private T elem;
         private Node next, prev;
 
-        public Node(T elem){
+        public Node(T elem) {
             this.elem = elem;
             prev = null;
             next = null;

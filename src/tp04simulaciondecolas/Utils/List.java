@@ -1,6 +1,5 @@
 package tp04simulaciondecolas.Utils;
 
-
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci

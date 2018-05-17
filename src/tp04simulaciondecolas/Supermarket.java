@@ -6,7 +6,7 @@ import tp04simulaciondecolas.Utils.ArrayStack;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase supermercado
  * todo javadoc
  */

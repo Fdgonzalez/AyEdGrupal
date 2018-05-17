@@ -6,11 +6,10 @@ import tp04simulaciondecolas.exceptions.InvalidDataInFile;
 
 import java.io.IOException;
 
-
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase main
  */
 public class Main {
@@ -24,11 +23,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // argument validator
         if (args.length < 2 || args.length > 4)
             usage();
         String fileIn = args[0];
         String fileOut = args[1];
 
+        // reads file and saves to my Supermarket
         IO io = new IO(fileIn, fileOut);
         Supermarket supermarket = null;
         try {
@@ -39,7 +40,9 @@ public class Main {
         }
         int simulationLength = io.getSimulationLength();
 
+        // -n and ms argument given, so execute JavaFX
         if (args.length > 2) {
+            // getting ints from arguments
             if (args[2].charAt(0) != '-')
                 usage();
             int ms = 0;
@@ -51,12 +54,15 @@ public class Main {
                 System.out.println("-n or ms argument not an integer number");
                 usage();
             }
+
+            // GUI execution
             Controller controller = new Controller();
             controller.load(supermarket, simulationLength, iterations, ms);
             controller.start();
         }
+
+        // no -n and ms argument given, so calculate everything "instantly"
         if (args.length == 2) {
-            // if the simulation wasn't run just calculate everything 'instantly'
             int currentTime = 0; // current time unit
             while (currentTime < simulationLength) {
                 supermarket.update(currentTime++);

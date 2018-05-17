@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase Stack de enteros usando arrays generico
  */
 public class ArrayStack<T> {
@@ -17,6 +17,7 @@ public class ArrayStack<T> {
 
     /**
      * Constructor
+     *
      * @param maxSize number of arrays limit
      */
     @SuppressWarnings("unchecked")
@@ -46,6 +47,7 @@ public class ArrayStack<T> {
 
     /**
      * inserts an element to my stack
+     *
      * @param elem generic
      */
     public void push(T elem) {
