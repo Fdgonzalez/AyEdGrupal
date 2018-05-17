@@ -18,17 +18,15 @@ public class Main {
     /**
      * Display command line usage help
      */
-    public static void usage() {
+    private static void usage() {
         System.out.println("Usage: java -jar filename.jar fileIn fileOut [-n ms]");
         System.exit(0);
     }
 
     public static void main(String[] args) {
-        if (args.length < 2 || args.length > 4)
-            usage();
+        if (args.length < 2 || args.length > 4) usage();
         String fileIn = args[0];
         String fileOut = args[1];
-
         IO io = new IO(fileIn, fileOut);
         Supermarket supermarket = null;
         try {

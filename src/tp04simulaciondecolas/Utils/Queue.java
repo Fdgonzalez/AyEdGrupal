@@ -68,7 +68,7 @@ public class Queue<T> {
         private T elem;
         private Node next, prev;
 
-        public Node(T elem){
+        Node(T elem){
             this.elem = elem;
             prev = null;
             next = null;

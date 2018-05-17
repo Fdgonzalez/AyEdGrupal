@@ -13,7 +13,6 @@ import java.util.NoSuchElementException;
 public class ArrayStack<T> {
     private T[] elements;
     private int current;
-    //private final int defaultSize = 10;
 
     /**
      * Constructor
@@ -40,7 +39,7 @@ public class ArrayStack<T> {
         return temp;
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         return current == elements.length;
     }
 
@@ -49,9 +48,7 @@ public class ArrayStack<T> {
      * @param elem generic
      */
     public void push(T elem) {
-        if (isFull()) {
-            expand();
-        }
+        if (isFull()) expand();
         elements[current++] = elem;
     }
 

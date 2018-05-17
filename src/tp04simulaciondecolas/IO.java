@@ -1,23 +1,24 @@
 package tp04simulaciondecolas;
 
 
-import tp04simulaciondecolas.Utils.List;
 import tp04simulaciondecolas.exceptions.InvalidDataInFile;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
  * fileIn template
- *
+ * <p>
  * NUMBER_OF_CASHIERS
  * SIMULATION_TIME
  * CHANCE_OF_CLIENT_TO_ARRIVE
  * MIN_TIME_TO_ATTEND_CLIENT MAX_TIME_TO_ATTEND_CLIENT
- *
- *
+ * <p>
+ * <p>
  * Cantidad de usuarios que arribaron: NUMBER_OF_TOTAL_CLIENTS_ARRIVED
  * Cantidad de usuarios atendidos: NUMBER_OF_TOTAL_ATTENDED_CLIENTS
  * AVERAGE_WAIT_TIME
@@ -26,16 +27,19 @@ import java.nio.file.Paths;
  * CASHIER_TOTAL_LEISURE_TIME
  */
 public class IO {
+
     private BufferedReader bufferedReader;
     private FileWriter fileWriter;
     private int simulationTime;
+
     /**
      * Constructor
-     * @param input file
+     *
+     * @param input  file
      * @param output file
-     * fileOut template
+     *               fileOut template
      */
-    public IO(String input, String output){
+    IO(String input, String output) {
         try {
             // file reader
             Path path = Paths.get(input);
@@ -55,7 +59,7 @@ public class IO {
      * @return
      * @throws IOException
      */
-    public Supermarket read() throws IOException, InvalidDataInFile {
+    Supermarket read() throws IOException, InvalidDataInFile {
 
         // NUMBER_OF_CASHIERS
         int numberOfCashiers = Integer.parseInt(bufferedReader.readLine());
@@ -81,19 +85,20 @@ public class IO {
         // MAX_TIME_TO_ATTEND_CLIENT
         int maxTimeToAttend = Integer.parseInt(minMax[1]);
         if (maxTimeToAttend < 0) throw new InvalidDataInFile("Maximum time to attend cant be negative!");
-        if(maxTimeToAttend<minTimeToAttend){
+        if (maxTimeToAttend < minTimeToAttend) {
             throw new InvalidDataInFile("Minimum cashier time is greater than the max");
         }
         bufferedReader.close();
 
-        return new Supermarket(numberOfCashiers,chanceToArrive,minTimeToAttend,maxTimeToAttend);
+        return new Supermarket(numberOfCashiers, chanceToArrive, minTimeToAttend, maxTimeToAttend);
     }
 
     public void write(String s) throws IOException {
         fileWriter.write(s);
         fileWriter.close();
     }
-    public int getSimulationLength() {
+
+    int getSimulationLength() {
         return simulationTime;
     }
 }
