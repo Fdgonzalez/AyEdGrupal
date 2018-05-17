@@ -94,21 +94,20 @@ public class Supermarket {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Cantidad de usuarios que arribaron: ");
-        sb.append(totalClients);
-        sb.append('\n');
-        sb.append("Cantidad de usuarios atendidos: ");
-        sb.append(clientsServiced);
-        sb.append('\n');
-        sb.append(String.format("%.1f", timeSpentInQueueAverage));//use only one decimal point
-        sb.append('\n');
-        sb.append(queueLengthAverageAtEnd);
-        sb.append('\n');
-        sb.append(queueMaxLength);
-        sb.append('\n');
-        sb.append(totalIdleTime);
-        return sb.toString();
+        String result = "Cantidad de usuarios que arribaron: " +
+                totalClients +
+                '\n' +
+                "Cantidad de usuarios atendidos: " +
+                clientsServiced +
+                '\n' +
+                String.format("%.1f", timeSpentInQueueAverage) +//use only one decimal point
+                '\n' +
+                queueLengthAverageAtEnd +
+                '\n' +
+                queueMaxLength +
+                '\n' +
+                totalIdleTime;
+        return result;
     }
 
     public Cashier[] getCashiers() {
