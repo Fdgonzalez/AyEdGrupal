@@ -65,7 +65,7 @@ public class List<T> {
         T value;
         Node next;
 
-        public Node() {
+        Node() {
             value = null;
             next = null;
         }

@@ -8,10 +8,9 @@ import java.util.NoSuchElementException;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * TODO javadoc de esto
  * Cajero
- *
  */
 public class Cashier {
     private Queue<Client> clientQueue;
@@ -20,14 +19,14 @@ public class Cashier {
     private int maxTime;
     private int currentClientTime;//time it will take to serve this client
     private int currentClientActualTime;//time the client has been a the cashier so far
-    private int idleTime;
+    private int idleTime;//time cashier without client
     private int queueMaxLength;
 
     /**
      * @param cashierMinTime
      * @param cashierMaxTime
      */
-    public Cashier(int cashierMinTime, int cashierMaxTime) {
+    Cashier(int cashierMinTime, int cashierMaxTime) {
         currentClient = null;
         clientQueue = new Queue<>();
         minTime = cashierMinTime;
@@ -39,7 +38,7 @@ public class Cashier {
     /**
      * @param client
      */
-    public void addClient(Client client) {
+    void addClient(Client client) {
         if (currentClient == null && clientQueue.isEmpty()) {
             currentClient = client;
             currentClientTime = (int) (Math.random() * (maxTime - minTime + 1)) + minTime;
@@ -54,7 +53,7 @@ public class Cashier {
     /**
      * @param currentTime
      */
-    public void update(int currentTime) {
+    void update(int currentTime) {
         if (currentClient == null) {
             try {
                 currentClient = clientQueue.dequeue();
@@ -65,8 +64,9 @@ public class Cashier {
                 return;
             }
         }
-        if (currentClientActualTime == 0)
+        if (currentClientActualTime == 0) {
             currentClient.reachedCashierAt(currentTime); // only update this the first time
+        }
         currentClientActualTime++;
         if (currentClientActualTime >= currentClientTime) {
             currentClient.finishedBuying();
@@ -79,11 +79,11 @@ public class Cashier {
         return clientQueue.length();
     }
 
-    public int getIdleTime() {
+    int getIdleTime() {
         return idleTime;
     }
 
-    public int getQueueMaxLength() {
+    int getQueueMaxLength() {
         return queueMaxLength;
     }
 

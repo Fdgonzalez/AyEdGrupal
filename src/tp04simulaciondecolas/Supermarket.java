@@ -6,7 +6,7 @@ import tp04simulaciondecolas.Utils.ArrayStack;
 /**
  * TP04 Simulacion de Colas.
  * Por Facundo Gonzalez, Juan Manuel Lopez Gabeiras y Juan Gabriel Ricci
- *
+ * <p>
  * Clase supermercado
  * todo javadoc
  */
@@ -27,7 +27,7 @@ public class Supermarket {
      * @param cashierMinTime
      * @param cashierMaxTime
      */
-    public Supermarket(int cashierAmount, double newCustomerChance, int cashierMinTime, int cashierMaxTime) {
+    Supermarket(int cashierAmount, double newCustomerChance, int cashierMinTime, int cashierMaxTime) {
         cashiers = new Cashier[cashierAmount];
         clients = new ArrayStack<>(10);
         this.newCustomerChance = newCustomerChance;
@@ -68,17 +68,16 @@ public class Supermarket {
         int totalSpentInQueue = 0; // sum of all times clients that reached a cashier spent in a queue
         while (!clients.isEmpty()) {
             Client c = clients.pop();
-            if (c.hasLeftStore())
-                clientsServiced++;
+            if (c.hasLeftStore()) clientsServiced++;
             if (c.hasReachedCashier()) {
                 clientsThatReachedACashier++;
                 totalSpentInQueue += c.getTimeSpentInQueue();
             }
         }
-        if (clientsThatReachedACashier > 0)
+        if (clientsThatReachedACashier > 0) {
             timeSpentInQueueAverage = totalSpentInQueue / clientsThatReachedACashier;
-        else
-            timeSpentInQueueAverage = 0;
+        }
+        else timeSpentInQueueAverage = 0;
         for (Cashier c : cashiers) {
             queueLengthAverageAtEnd += c.getQueueLength();
             totalIdleTime += c.getIdleTime();
