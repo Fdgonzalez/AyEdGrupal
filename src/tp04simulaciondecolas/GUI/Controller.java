@@ -41,14 +41,13 @@ class Controller {
 
     void init(Stage stage) {
         Text currentIter = new Text("Iteración actual: 0");
-        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis xAxis = new NumberAxis(0,10,1);
         final CategoryAxis yAxis = new CategoryAxis();
         BarChart<Number, String> bc = new BarChart<>(xAxis, yAxis);
         bc.setLegendVisible(false);
         bc.setTitle("Queue Simulation");
         xAxis.setLabel("People");
-        xAxis.setTickLabelRotation(90);
-        yAxis.setLabel("Rows");
+        yAxis.setLabel("Queues");
         Cashier[] cashiers = supermarket.getCashiers();
         XYChart.Series<Number, String>[] cashierSeries = new XYChart.Series[cashiers.length];
         for (int i = 0; i < cashiers.length; i++) {
@@ -105,14 +104,15 @@ class Controller {
                 System.exit(1);
             }
         });
-        ScrollPane scrolly = new ScrollPane();
         GridPane all = new GridPane();
         GridPane.setConstraints(bc, 0, 0);
         GridPane.setConstraints(currentIter, 0, 1);
-        GridPane.setConstraints(cashiersGP, 0, 2);
-        all.getChildren().addAll(bc, currentIter, cashiersGP);
-        scrolly.setContent(all);
-        Scene scene = new Scene(scrolly, 800, 600);
+        ScrollPane scrolly = new ScrollPane();
+        GridPane.setConstraints(scrolly,0,2);
+        scrolly.setContent(cashiersGP);
+        scrolly.setPrefViewportHeight(100);
+        all.getChildren().addAll(bc, currentIter, scrolly);
+        Scene scene = new Scene(all, 800, 800);
         stage.setScene(scene);
     }
 
