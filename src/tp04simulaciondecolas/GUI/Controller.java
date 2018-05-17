@@ -41,7 +41,8 @@ class Controller {
 
     void init(Stage stage) {
         Text currentIter = new Text("Iteración actual: 0");
-        final NumberAxis xAxis = new NumberAxis(0,10,1);
+        int currentUpperBound = 10;
+        final NumberAxis xAxis = new NumberAxis(0,currentUpperBound,1);
         final CategoryAxis yAxis = new CategoryAxis();
         BarChart<Number, String> bc = new BarChart<>(xAxis, yAxis);
         bc.setLegendVisible(false);
@@ -80,6 +81,10 @@ class Controller {
             }
             currentIter.setText("Iteración actual: " + currentIteration);
             for (int i = 0; i < cashiers.length; i++) {
+                if(cashiers[i].getQueueLength() > xAxis.getUpperBound()){
+                    //less annoying than the default auto-ranging
+                    xAxis.setUpperBound(xAxis.getUpperBound()*2);
+                }
                 //There is only one Data in each series so it will be in index 0
                 cashierSeries[i].getData().get(0).setXValue(cashiers[i].getQueueLength());
                 if (cashiers[i].isIdle()) {
