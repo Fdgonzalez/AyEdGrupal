@@ -17,6 +17,8 @@ public class BackTrackingStrategy implements SolvingStrategy {
     private int currentMatch;
     private List<Match> matches;
     private List<Team> teams;
+    private int comparisons;
+    private long matchesGenerated;
 
     /**
      * Constructor, receives a list of matches and a list of teams
@@ -38,6 +40,21 @@ public class BackTrackingStrategy implements SolvingStrategy {
         solve(root);
     }
 
+    @Override
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    @Override
+    public long getMatchResultsGenerated() {
+        return matchesGenerated;
+    }
+
+    @Override
+    public int getSolutionsGenerated() {
+        return 1; // solo genera una solucion porque cuando completa el ultimo partido solo hay un posible
+    }
+
     /**
      * Solve helper recursive method.
      * @param current node to solve.
@@ -50,6 +67,9 @@ public class BackTrackingStrategy implements SolvingStrategy {
         if(current.match.isPossible('X')) possibles.add('X');
         if(current.match.isPossible('1')) possibles.add('1');
         if(current.match.isPossible('2')) possibles.add('2');
+        //por cada isPossible hace una comparacion o dos en el caso del empate
+        comparisons += 3;
+        matchesGenerated += possibles.size();
         if(possibles.isEmpty()) return; // discard path
         if(currentMatch == matches.size()) {
             current.match.setOutcome(possibles.get(0));
@@ -65,6 +85,7 @@ public class BackTrackingStrategy implements SolvingStrategy {
                 //validate that the final scores were reached
                 boolean isCorrect = true;
                 for(Team team:teams){
+                    comparisons++;
                     if(!team.isMax()) {
                         isCorrect = false;
                         break;

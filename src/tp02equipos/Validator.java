@@ -61,4 +61,16 @@ public class Validator{
         sb.deleteCharAt(sb.lastIndexOf(" "));
         return sb.toString();
     }
+
+    public int getComparisons() {
+        return strategy.getComparisons();
+    }
+
+    public long getMatchResultsGenerated() {
+        return strategy.getMatchResultsGenerated();
+    }
+
+    public int getSolutionsGenerated() {
+        return strategy.getSolutionsGenerated();
+    }
 }

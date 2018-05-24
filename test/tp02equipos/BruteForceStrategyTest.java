@@ -125,6 +125,9 @@ public class BruteForceStrategyTest {
         v.swapStrategy(new BruteForceStrategy(v.getMatches(), v.getTeams()));
         v.solve();
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X",v.toString());
+        System.out.println("Comparisons: "+v.getComparisons());
+        System.out.println("Match results generated: "+v.getMatchResultsGenerated());
+        System.out.println("Solutions generated: "+v.getSolutionsGenerated());
     }
 
     @Test

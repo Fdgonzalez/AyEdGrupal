@@ -119,7 +119,9 @@ public class BacktrackingStrategyTest {
         Validator v = p.parseNext();
         v.solve();
         v.print();
-
+        System.out.println("Comparisons: "+v.getComparisons());
+        System.out.println("Match results generated: "+v.getMatchResultsGenerated());
+        System.out.println("Solutions generated: "+v.getSolutionsGenerated());
         assertEquals("1 1 X 1 1 X X X 1 X 2 1 X 2 1 2 2 X", v.toString());
     }
 }

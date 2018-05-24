@@ -7,4 +7,10 @@ import tp02equipos.exceptions.NoMatchesException;
 
 public interface SolvingStrategy {
     void solve() throws NoMatchesException, InvalidResultException;
+
+    int getComparisons();
+
+    long getMatchResultsGenerated();
+
+    int getSolutionsGenerated();
 }
